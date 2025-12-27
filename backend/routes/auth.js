@@ -196,9 +196,9 @@ router.post('/test-login', async (req, res) => {
     // Test password comparison
     const isValidPassword = await bcrypt.compare(password, user.password);
     
-    // Also test with a known hash
+    // Also test with a known hash (using sync methods for consistency)
     const testHash = bcrypt.hashSync('admin123', 10);
-    const testCompare = await bcrypt.compare('admin123', testHash);
+    const testCompare = bcrypt.compareSync('admin123', testHash);
     
     return res.json({
       success: isValidPassword,
