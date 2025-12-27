@@ -117,6 +117,30 @@ const initDefaultUser = () => {
 // Initialize on module load
 initDefaultUser();
 
+// Debug endpoint to check users
+router.get('/check-users', (req, res) => {
+  try {
+    const users = readUsers();
+    const usersPath = path.join(__dirname, '../data/users/users.json');
+    const fileExists = fs.existsSync(usersPath);
+    
+    res.json({
+      fileExists,
+      filePath: usersPath,
+      userCount: users.length,
+      users: users.map(u => ({
+        username: u.username,
+        role: u.role,
+        email: u.email,
+        hasPassword: !!u.password,
+        passwordLength: u.password ? u.password.length : 0
+      }))
+    });
+  } catch (error) {
+    res.status(500).json({ error: 'Failed to check users', details: error.message });
+  }
+});
+
 // Also add routes to manually initialize/reset users (both GET and POST for convenience)
 router.get('/init-users', (req, res) => {
   try {
@@ -124,7 +148,8 @@ router.get('/init-users', (req, res) => {
     const users = readUsers();
     res.json({ 
       message: 'Default users initialized successfully',
-      users: users.map(u => ({ username: u.username, role: u.role }))
+      userCount: users.length,
+      users: users.map(u => ({ username: u.username, role: u.role, email: u.email }))
     });
   } catch (error) {
     res.status(500).json({ error: 'Failed to initialize users', details: error.message });
@@ -137,7 +162,8 @@ router.post('/init-users', (req, res) => {
     const users = readUsers();
     res.json({ 
       message: 'Default users initialized successfully',
-      users: users.map(u => ({ username: u.username, role: u.role }))
+      userCount: users.length,
+      users: users.map(u => ({ username: u.username, role: u.role, email: u.email }))
     });
   } catch (error) {
     res.status(500).json({ error: 'Failed to initialize users', details: error.message });
@@ -196,41 +222,57 @@ router.post('/register', async (req, res) => {
 
 // Login
 router.post('/login', async (req, res) => {
-  const { username, password } = req.body;
-  
-  if (!username || !password) {
-    return res.status(400).json({ error: 'Username and password are required' });
-  }
-  
-  const users = readUsers();
-  const user = users.find(u => u.username === username);
-  
-  if (!user) {
-    return res.status(401).json({ error: 'Invalid credentials' });
-  }
-  
-  const isValidPassword = await bcrypt.compare(password, user.password);
-  
-  if (!isValidPassword) {
-    return res.status(401).json({ error: 'Invalid credentials' });
-  }
-  
-  const token = jwt.sign(
-    { userId: user.id, username: user.username, role: user.role },
-    JWT_SECRET,
-    { expiresIn: '7d' }
-  );
-  
-  res.json({
-    token,
-    user: {
-      id: user.id,
-      username: user.username,
-      email: user.email,
-      role: user.role,
-      name: user.name
+  try {
+    const { username, password } = req.body;
+    
+    if (!username || !password) {
+      return res.status(400).json({ error: 'Username and password are required' });
     }
-  });
+    
+    // Ensure users are initialized before login attempt
+    initDefaultUser();
+    
+    const users = readUsers();
+    console.log(`Login attempt for username: ${username}`);
+    console.log(`Total users in system: ${users.length}`);
+    console.log(`Available usernames: ${users.map(u => u.username).join(', ')}`);
+    
+    const user = users.find(u => u.username === username);
+    
+    if (!user) {
+      console.log(`User not found: ${username}`);
+      return res.status(401).json({ error: 'Invalid credentials' });
+    }
+    
+    console.log(`User found: ${user.username}, comparing password...`);
+    const isValidPassword = await bcrypt.compare(password, user.password);
+    
+    if (!isValidPassword) {
+      console.log(`Password mismatch for user: ${username}`);
+      return res.status(401).json({ error: 'Invalid credentials' });
+    }
+    
+    console.log(`Login successful for user: ${username}`);
+    const token = jwt.sign(
+      { userId: user.id, username: user.username, role: user.role },
+      JWT_SECRET,
+      { expiresIn: '7d' }
+    );
+    
+    res.json({
+      token,
+      user: {
+        id: user.id,
+        username: user.username,
+        email: user.email,
+        role: user.role,
+        name: user.name
+      }
+    });
+  } catch (error) {
+    console.error('Login error:', error);
+    res.status(500).json({ error: 'Login failed', details: error.message });
+  }
 });
 
 // Get current user
