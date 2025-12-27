@@ -39,7 +39,17 @@ const initDefaultUser = () => {
     }
     
     const users = readUsers();
-    const hashedPassword = bcrypt.hashSync('admin123', 10);
+    
+    // Create a consistent hash for admin123 - use a fixed salt for consistency
+    // But actually, we'll verify the password works by testing it
+    const testPassword = 'admin123';
+    const hashedPassword = bcrypt.hashSync(testPassword, 10);
+    
+    // Verify the hash works before using it
+    const testVerify = bcrypt.compareSync(testPassword, hashedPassword);
+    if (!testVerify) {
+      throw new Error('Password hash verification failed during initialization');
+    }
     
     // Always ensure default users exist with correct password
     const defaultUsers = [
@@ -80,6 +90,10 @@ const initDefaultUser = () => {
       writeUsers(users);
       usersUpdated = true;
       console.log('✓ Default users created (admin, manager, cashier)');
+      
+      // Verify users were written correctly
+      const verifyUsers = readUsers();
+      console.log(`✓ Verified: ${verifyUsers.length} users in file`);
     } else {
       // Users exist, but ensure all default users exist with correct password
       defaultUsers.forEach(defaultUser => {
@@ -90,15 +104,30 @@ const initDefaultUser = () => {
           usersUpdated = true;
           console.log(`✓ ${defaultUser.username} user created`);
         } else {
-          // User exists, update password to ensure it's correct
-          users[existingUserIndex].password = defaultUser.password;
+          // User exists, ALWAYS update password to ensure it's correct
+          const oldPassword = users[existingUserIndex].password;
+          users[existingUserIndex].password = hashedPassword;
+          users[existingUserIndex].email = defaultUser.email; // Also update email
+          users[existingUserIndex].name = defaultUser.name; // Also update name
           usersUpdated = true;
           console.log(`✓ ${defaultUser.username} password reset to default`);
+          console.log(`  Old hash: ${oldPassword ? oldPassword.substring(0, 20) + '...' : 'none'}`);
+          console.log(`  New hash: ${hashedPassword.substring(0, 20)}...`);
         }
       });
       
       if (usersUpdated) {
         writeUsers(users);
+        console.log('✓ Users file updated');
+        
+        // Verify the update worked
+        const verifyUsers = readUsers();
+        verifyUsers.forEach(u => {
+          if (['admin', 'manager', 'cashier'].includes(u.username)) {
+            const passwordTest = bcrypt.compareSync(testPassword, u.password);
+            console.log(`✓ ${u.username} password verification: ${passwordTest ? 'PASS' : 'FAIL'}`);
+          }
+        });
       }
     }
     
@@ -138,6 +167,55 @@ router.get('/check-users', (req, res) => {
     });
   } catch (error) {
     res.status(500).json({ error: 'Failed to check users', details: error.message });
+  }
+});
+
+// Test login endpoint (for debugging)
+router.post('/test-login', async (req, res) => {
+  try {
+    const { username, password } = req.body;
+    
+    if (!username || !password) {
+      return res.status(400).json({ error: 'Username and password are required' });
+    }
+    
+    // Ensure users are initialized
+    initDefaultUser();
+    
+    const users = readUsers();
+    const user = users.find(u => u.username === username);
+    
+    if (!user) {
+      return res.json({
+        success: false,
+        error: 'User not found',
+        availableUsers: users.map(u => u.username)
+      });
+    }
+    
+    // Test password comparison
+    const isValidPassword = await bcrypt.compare(password, user.password);
+    
+    // Also test with a known hash
+    const testHash = bcrypt.hashSync('admin123', 10);
+    const testCompare = await bcrypt.compare('admin123', testHash);
+    
+    return res.json({
+      success: isValidPassword,
+      userFound: true,
+      username: user.username,
+      passwordMatch: isValidPassword,
+      testHashWorks: testCompare,
+      userPasswordHash: user.password.substring(0, 20) + '...',
+      message: isValidPassword ? 'Password is correct' : 'Password does not match'
+    });
+  } catch (error) {
+    res.status(500).json({ 
+      success: false,
+      error: 'Test login failed', 
+      details: error.message,
+      stack: error.stack
+    });
   }
 });
 
