@@ -24,75 +24,108 @@ const writeUsers = (data) => {
 
 // Initialize default users if no users exist or reset admin if needed
 const initDefaultUser = () => {
-  const users = readUsers();
-  const hashedPassword = bcrypt.hashSync('admin123', 10);
-  
-  // Always ensure default users exist with correct password
-  const defaultUsers = [
-    {
-      id: uuidv4(),
-      username: 'admin',
-      email: 'admin@example.com',
-      password: hashedPassword,
-      role: 'admin',
-      name: 'Administrator',
-      createdAt: new Date().toISOString()
-    },
-    {
-      id: uuidv4(),
-      username: 'manager',
-      email: 'manager@example.com',
-      password: hashedPassword,
-      role: 'manager',
-      name: 'Manager',
-      createdAt: new Date().toISOString()
-    },
-    {
-      id: uuidv4(),
-      username: 'cashier',
-      email: 'cashier@example.com',
-      password: hashedPassword,
-      role: 'cashier',
-      name: 'Cashier',
-      createdAt: new Date().toISOString()
+  try {
+    // Ensure data directory exists
+    const usersDir = path.dirname(usersPath);
+    if (!fs.existsSync(usersDir)) {
+      fs.mkdirSync(usersDir, { recursive: true });
+      console.log('✓ Created users data directory');
     }
-  ];
-  
-  if (users.length === 0) {
-    // No users exist, add all defaults
-    defaultUsers.forEach(user => users.push(user));
-    writeUsers(users);
-    console.log('✓ Default users created');
-  } else {
-    // Users exist, but ensure admin exists with correct password
-    const adminIndex = users.findIndex(u => u.username === 'admin');
-    if (adminIndex === -1) {
-      // Admin doesn't exist, add it
-      users.push(defaultUsers[0]);
+    
+    // Ensure users.json exists
+    if (!fs.existsSync(usersPath)) {
+      fs.writeFileSync(usersPath, JSON.stringify([], null, 2));
+      console.log('✓ Created users.json file');
+    }
+    
+    const users = readUsers();
+    const hashedPassword = bcrypt.hashSync('admin123', 10);
+    
+    // Always ensure default users exist with correct password
+    const defaultUsers = [
+      {
+        id: uuidv4(),
+        username: 'admin',
+        email: 'admin@example.com',
+        password: hashedPassword,
+        role: 'admin',
+        name: 'Administrator',
+        createdAt: new Date().toISOString()
+      },
+      {
+        id: uuidv4(),
+        username: 'manager',
+        email: 'manager@example.com',
+        password: hashedPassword,
+        role: 'manager',
+        name: 'Manager',
+        createdAt: new Date().toISOString()
+      },
+      {
+        id: uuidv4(),
+        username: 'cashier',
+        email: 'cashier@example.com',
+        password: hashedPassword,
+        role: 'cashier',
+        name: 'Cashier',
+        createdAt: new Date().toISOString()
+      }
+    ];
+    
+    let usersUpdated = false;
+    
+    if (users.length === 0) {
+      // No users exist, add all defaults
+      defaultUsers.forEach(user => users.push(user));
       writeUsers(users);
-      console.log('✓ Admin user created');
+      usersUpdated = true;
+      console.log('✓ Default users created (admin, manager, cashier)');
     } else {
-      // Admin exists, update password to ensure it's correct
-      users[adminIndex].password = hashedPassword;
-      writeUsers(users);
-      console.log('✓ Admin password reset to default');
+      // Users exist, but ensure all default users exist with correct password
+      defaultUsers.forEach(defaultUser => {
+        const existingUserIndex = users.findIndex(u => u.username === defaultUser.username);
+        if (existingUserIndex === -1) {
+          // User doesn't exist, add it
+          users.push(defaultUser);
+          usersUpdated = true;
+          console.log(`✓ ${defaultUser.username} user created`);
+        } else {
+          // User exists, update password to ensure it's correct
+          users[existingUserIndex].password = defaultUser.password;
+          usersUpdated = true;
+          console.log(`✓ ${defaultUser.username} password reset to default`);
+        }
+      });
+      
+      if (usersUpdated) {
+        writeUsers(users);
+      }
     }
     
-    // Ensure manager exists
-    if (!users.find(u => u.username === 'manager')) {
-      users.push(defaultUsers[1]);
-      writeUsers(users);
-    }
+    // Log current users for debugging
+    console.log(`✓ Total users in system: ${users.length}`);
+    users.forEach(u => {
+      console.log(`  - ${u.username} (${u.role})`);
+    });
     
-    // Ensure cashier exists
-    if (!users.find(u => u.username === 'cashier')) {
-      users.push(defaultUsers[2]);
-      writeUsers(users);
-    }
+  } catch (error) {
+    console.error('✗ ERROR initializing default users:', error.message);
+    console.error(error.stack);
   }
 };
 
+// Initialize on module load
 initDefaultUser();
+
+// Also add a route to manually initialize/reset users
+router.post('/init-users', (req, res) => {
+  try {
+    initDefaultUser();
+    res.json({ message: 'Default users initialized successfully' });
+  } catch (error) {
+    res.status(500).json({ error: 'Failed to initialize users', details: error.message });
+  }
+});
 
 // Register
 router.post('/register', async (req, res) => {

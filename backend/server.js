@@ -77,6 +77,17 @@ const initDataFiles = () => {
 
 initDataFiles();
 
+// Initialize default users after data files are created
+// This ensures the users.json file exists before auth routes try to use it
+setTimeout(() => {
+  try {
+    const authRoutes = require('./routes/auth');
+    console.log('✓ Default users initialization triggered');
+  } catch (error) {
+    console.error('✗ ERROR initializing auth routes:', error.message);
+  }
+}, 100);
+
 // Test outlets route before registering
 try {
   console.log('Testing outlets route import...');
