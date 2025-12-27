@@ -1,0 +1,26 @@
+[
+  {
+    "id": "386049a8-0b44-490a-8794-7b5d28e03b8c",
+    "orderId": "386049a8-0b44-490a-8794-7b5d28e03b8c",
+    "orderNumber": "ORD-1766442519250",
+    "items": [
+      {
+        "productId": "e83af8b4-c0b7-4158-aeac-9da88da85aeb",
+        "productName": "americano",
+        "quantity": 1,
+        "price": 28000,
+        "total": 28000
+      }
+    ],
+    "customerId": null,
+    "subtotal": 28000,
+    "discount": 0,
+    "tax": 0,
+    "total": 28000,
+    "paymentMethod": "cash",
+    "status": "completed",
+    "date": "2025-12-22T22:28:39.251Z",
+    "userId": "system",
+    "receiptNumber": "RCP-1766442519253"
+  }
+]

@@ -1,0 +1,204 @@
+================================================================================
+    HOW TO PUT APP ICON ON YOUR DESKTOP
+    Step-by-Step to Create Desktop Shortcut
+================================================================================
+
+You need to CREATE a desktop shortcut. The icon won't appear automatically.
+Here's how to do it:
+
+================================================================================
+METHOD 1: CHROME - CREATE SHORTCUT (Easiest - 2 minutes)
+================================================================================
+
+STEP 1: Open Your App in Chrome
+--------------------------------
+1. Make sure server is running (http://localhost:3000)
+2. Open Google Chrome browser
+3. Type in address bar: http://localhost:3000
+4. Press Enter
+5. Your app should open
+
+STEP 2: Create Desktop Shortcut
+--------------------------------
+1. Look at top right of Chrome window
+2. Click the three dots menu (⋮)
+3. Move mouse down to "More tools"
+4. Click "Create shortcut..."
+5. A popup appears
+
+STEP 3: Configure Shortcut
+---------------------------
+1. In the popup:
+   - Name: "POS Inventory System" (or any name you want)
+   - Check the box: "Open as window" (important!)
+2. Click "Create" button
+
+STEP 4: Find Your Desktop Icon
+-------------------------------
+1. Look at your Desktop
+2. You should see a new icon named "POS Inventory System"
+3. This is your desktop shortcut!
+
+STEP 5: Use It
+--------------
+- Double-click the desktop icon
+- Your app opens in its own window
+- Works like a real app!
+
+STEP 6: Add Your TDO Icon (Make it Pretty)
+-------------------------------------------
+1. Find your TDO icon file (logo512.png)
+2. Open it in Preview (double-click)
+3. Select All: Cmd+A
+4. Copy: Cmd+C
+5. Go back to Desktop
+6. Right-click your "POS Inventory System" shortcut
+7. Click "Get Info"
+8. Click the small icon in top-left of Get Info window
+9. Paste: Cmd+V
+10. Your TDO icon now appears on desktop!
+
+================================================================================
+METHOD 2: SCRIPT EDITOR (If Chrome Method Doesn't Work)
+================================================================================
+
+STEP 1: Open Script Editor
+---------------------------
+1. Press Cmd+Space (Spotlight search)
+2. Type: Script Editor
+3. Press Enter
+
+STEP 2: Create Script
+---------------------
+1. In Script Editor, delete any existing text
+2. Paste this code:
+
+   tell application "Google Chrome"
+     activate
+     open location "http://localhost:3000"
+   end tell
+
+3. If you prefer Safari, use this instead:
+
+   tell application "Safari"
+     activate
+     open location "http://localhost:3000"
+   end tell
+
+STEP 3: Save as Application
+---------------------------
+1. File → Save (or Cmd+S)
+2. File Format: Choose "Application" from dropdown
+3. Name: "POS Inventory System"
+4. Where: Desktop
+5. Click "Save"
+
+STEP 4: Find Your Desktop Icon
+-------------------------------
+1. Look at Desktop
+2. You should see "POS Inventory System.app"
+3. This is your desktop launcher!
+
+STEP 5: Add Your TDO Icon
+--------------------------
+1. Open your TDO icon (logo512.png) in Preview
+2. Select All: Cmd+A
+3. Copy: Cmd+C
+4. Right-click "POS Inventory System.app" on Desktop
+5. Get Info
+6. Click small icon in top-left
+7. Paste: Cmd+V
+8. Your TDO icon appears!
+
+STEP 6: Use It
+--------------
+- Double-click the desktop icon
+- Opens browser to your app
+- Works perfectly!
+
+================================================================================
+VISUAL GUIDE: Chrome Method
+================================================================================
+
+Chrome Window:
+┌─────────────────────────────────────┐
+│  [Back] [Forward]  http://localhost:3000  [⋮] ← Click here
+│                                     │
+│  Your POS App Content               │
+│                                     │
+└─────────────────────────────────────┘
+         ↓
+    Click "More tools"
+         ↓
+    Click "Create shortcut..."
+         ↓
+    Check "Open as window"
+         ↓
+    Click "Create"
+         ↓
+    Icon appears on Desktop!
+
+================================================================================
+TROUBLESHOOTING
+================================================================================
+
+PROBLEM: "Create shortcut" not in Chrome menu
+----------------------------------------------
+SOLUTION:
+- Make sure you're using Google Chrome (not Safari/Firefox)
+- Try: Menu → More tools → Create shortcut
+- If still not there, use Method 2 (Script Editor)
+
+PROBLEM: Icon doesn't appear on Desktop
+----------------------------------------
+SOLUTION:
+- Check Desktop folder (might be hidden)
+- Press F11 to show Desktop
+- Or: Finder → View → Show Desktop
+- Look in Downloads folder (sometimes saves there)
+
+PROBLEM: Shortcut doesn't work when clicked
+-------------------------------------------
+SOLUTION:
+- Make sure server is running (npx serve -s build -p 3000)
+- Check URL is correct: http://localhost:3000
+- Try opening in browser first to verify
+
+PROBLEM: Can't change icon to TDO
+----------------------------------
+SOLUTION:
+- Make sure you copy the icon first (Cmd+C)
+- Click the SMALL icon in Get Info (not the big one)
+- Then paste (Cmd+V)
+- Icon must be PNG format
+
+================================================================================
+QUICK CHECKLIST
+================================================================================
+
+[ ] App is running (http://localhost:3000 works in browser)
+[ ] Opened Chrome browser
+[ ] Went to http://localhost:3000
+[ ] Clicked menu (3 dots) → More tools → Create shortcut
+[ ] Checked "Open as window"
+[ ] Clicked "Create"
+[ ] Icon appears on Desktop
+[ ] (Optional) Added TDO icon to shortcut
+
+================================================================================
+SUMMARY
+================================================================================
+
+The icon WON'T appear automatically. You need to CREATE it:
+
+EASIEST WAY:
+1. Open Chrome → http://localhost:3000
+2. Menu (⋮) → More tools → Create shortcut
+3. Check "Open as window"
+4. Create
+5. Icon appears on Desktop!
+
+Then optionally add your TDO icon to make it pretty.
+
+================================================================================
+

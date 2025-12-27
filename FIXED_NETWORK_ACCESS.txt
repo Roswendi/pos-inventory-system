@@ -1,0 +1,139 @@
+================================================================================
+    FIXED: NETWORK ACCESS FROM OTHER DEVICES
+================================================================================
+
+✅ PROBLEM IDENTIFIED AND FIXED
+================================================================================
+
+THE ISSUE:
+==========
+Server was NOT running! That's why IP was unreachable.
+
+THE FIX:
+========
+1. ✅ Server code updated to listen on all network interfaces (0.0.0.0)
+2. ✅ Server is now running
+3. ✅ Firewall is disabled (not blocking)
+4. ✅ Network connectivity confirmed
+
+================================================================================
+
+HOW TO ACCESS FROM OTHER DEVICES:
+=================================
+
+STEP 1: Make Sure Server is Running
+------------------------------------
+On your main laptop:
+- Double-click "Start_TDO_POS.command" on Desktop
+- OR open Terminal and run:
+  cd backend
+  node server.js
+
+You should see:
+  🚀 Server running on http://localhost:5001
+  🌐 Access from other devices on your network:
+     http://192.168.0.200:5001
+
+STEP 2: On Other Device
+------------------------
+1. Connect to SAME WiFi network
+2. Open browser
+3. Go to: http://192.168.0.200:5001
+4. Login: admin / admin123
+
+DONE! ✅
+
+================================================================================
+
+VERIFY IT'S WORKING:
+====================
+
+TEST 1: From Server Computer
+-----------------------------
+  http://localhost:5001
+  Should work! ✓
+
+TEST 2: From Server Using IP
+----------------------------
+  http://192.168.0.200:5001
+  Should work! ✓
+
+TEST 3: From Other Device
+--------------------------
+  http://192.168.0.200:5001
+  Should work! ✓
+
+================================================================================
+
+IF STILL NOT WORKING:
+=====================
+
+CHECK 1: Server Running?
+-------------------------
+  lsof -ti:5001
+
+If empty, server is NOT running!
+Start it!
+
+CHECK 2: Same WiFi Network?
+---------------------------
+- Both devices must be on SAME WiFi
+- Check WiFi name (SSID) is identical
+- Cannot be on different networks
+
+CHECK 3: Firewall (If Re-enabled)
+----------------------------------
+If you re-enabled firewall:
+1. System Settings → Network → Firewall
+2. Add Node.js exception
+3. OR allow port 5001
+
+CHECK 4: IP Address Changed?
+----------------------------
+If IP changed, find new IP:
+  ifconfig | grep "inet " | grep -v 127.0.0.1
+
+Use the NEW IP address!
+
+================================================================================
+
+TROUBLESHOOTING COMMANDS:
+=========================
+
+Check if server is running:
+  lsof -ti:5001
+
+Check current IP address:
+  ifconfig | grep "inet " | grep -v 127.0.0.1
+
+Test connection from server:
+  curl http://192.168.0.200:5001/api/health
+
+Test from other device (ping):
+  ping 192.168.0.200
+
+================================================================================
+
+IMPORTANT NOTES:
+================
+
+✅ Server MUST be running for other devices to connect
+✅ Both devices MUST be on same WiFi network
+✅ Use IP address (192.168.0.200), NOT localhost
+✅ Keep server Terminal window open while using
+
+✅ Multiple devices can connect at the same time!
+✅ Perfect for multiple cashiers, tablets, etc.
+
+================================================================================
+
+QUICK REFERENCE:
+================
+
+Server IP: 192.168.0.200
+Port: 5001
+URL: http://192.168.0.200:5001
+Login: admin / admin123
+
+================================================================================
+

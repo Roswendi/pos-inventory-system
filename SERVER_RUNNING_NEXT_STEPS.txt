@@ -1,0 +1,136 @@
+================================================================================
+    SERVER IS RUNNING! - NEXT STEPS
+================================================================================
+
+GOOD NEWS: "Copied local address to clipboard" means your server is WORKING!
+
+================================================================================
+WHAT TO DO NOW
+================================================================================
+
+STEP 1: Check Your Terminal
+-----------------------------
+Look at the terminal output. You should see something like:
+
+  ┌──────────────────────────────────────────────────┐
+  │                                                  │
+  │   Serving!                                       │
+  │                                                  │
+  │   - Local:    http://localhost:3000             │
+  │   - Network:  http://192.168.x.x:3000           │
+  │                                                  │
+  │   Copied local address to clipboard!            │
+  │                                                  │
+  └──────────────────────────────────────────────────┘
+
+STEP 2: Open the URL
+---------------------
+The URL is already copied to your clipboard!
+
+Just:
+1. Open your web browser (Chrome, Safari, Firefox)
+2. Press Cmd+V (or Ctrl+V) to paste the URL
+3. Press Enter
+
+OR manually type:
+  http://localhost:3000
+
+STEP 3: You Should See Your App!
+---------------------------------
+- Login page should appear
+- Your TDO icon should be in the browser tab
+- App should be working!
+
+================================================================================
+TESTING THE ICON
+================================================================================
+
+Once the app is open in your browser:
+
+1. CHECK BROWSER TAB
+   - Look at the browser tab
+   - Should show your TDO icon
+
+2. TEST "ADD TO HOME SCREEN"
+   - Chrome (Android): Menu → "Add to Home screen"
+   - Safari (iOS): Share → "Add to Home Screen"
+   - Desktop: Look for install icon in address bar
+
+3. VERIFY ICON APPEARS
+   - Icon should show your TDO design
+   - Clicking icon should open the app
+
+================================================================================
+IF YOU DON'T SEE THE URL
+================================================================================
+
+The URL is: http://localhost:3000
+
+Just type this in your browser address bar and press Enter.
+
+================================================================================
+WHAT'S HAPPENING
+================================================================================
+
+Your app is now running locally on your computer!
+
+- Server: Running on port 3000
+- App: Accessible at http://localhost:3000
+- Icons: Should be visible in browser tab
+- Ready: To test and install!
+
+================================================================================
+NEXT STEPS AFTER TESTING
+================================================================================
+
+Once you verify it works locally:
+
+1. DEPLOY TO WEB
+   - Upload build folder to Netlify
+   - Get your public URL
+   - Install on mobile devices
+
+2. TEST ON MOBILE
+   - Open deployed URL on phone
+   - Add to Home Screen
+   - Icon should be clickable!
+
+================================================================================
+TROUBLESHOOTING
+================================================================================
+
+PROBLEM: Browser shows "Can't connect"
+---------------------------------------
+SOLUTION:
+- Make sure server is still running (don't close terminal)
+- Check URL is exactly: http://localhost:3000
+- Try refreshing the page
+
+PROBLEM: Icon doesn't show
+---------------------------
+SOLUTION:
+- Check icons exist: ls frontend/public/logo*.png
+- Rebuild: npm run build
+- Clear browser cache
+- Hard refresh: Cmd+Shift+R (Mac) or Ctrl+Shift+R (Windows)
+
+PROBLEM: App shows errors
+-------------------------
+SOLUTION:
+- Make sure backend is running on port 5001
+- Check browser console (F12) for errors
+- Verify API URL is correct
+
+================================================================================
+QUICK REFERENCE
+================================================================================
+
+Server URL: http://localhost:3000
+Backend URL: http://localhost:5001 (should be running separately)
+
+To stop server: Press Ctrl+C in terminal
+
+To restart: Run the serve command again
+
+================================================================================
+

@@ -1,0 +1,153 @@
+================================================================================
+    HOW TO FIX "PORT 3000 IS IN USE" ERROR
+================================================================================
+
+This means something is already running on port 3000 (probably React dev server).
+
+================================================================================
+SOLUTION 1: KILL THE PROCESS (Recommended)
+================================================================================
+
+STEP 1: Find what's using port 3000
+------------------------------------
+Open terminal and run:
+  lsof -ti:3000
+
+This shows the process ID (PID).
+
+STEP 2: Kill the process
+-------------------------
+Copy the PID number and run:
+  kill -9 [PID]
+
+Example:
+  kill -9 12345
+
+OR kill all at once:
+  kill -9 $(lsof -ti:3000)
+
+STEP 3: Verify port is free
+---------------------------
+  lsof -ti:3000
+
+Should return nothing (port is free).
+
+STEP 4: Try again
+-----------------
+  cd "/Users/endiroswendi/Documents/ Old Laptop Documents/CAO/FINANCIAL REPORT/pos-inventory-system/frontend"
+  npx serve -s build -p 3000
+
+================================================================================
+SOLUTION 2: USE A DIFFERENT PORT (Easier)
+================================================================================
+
+Just use a different port number:
+
+  cd "/Users/endiroswendi/Documents/ Old Laptop Documents/CAO/FINANCIAL REPORT/pos-inventory-system/frontend"
+  npx serve -s build -p 3001
+
+Then open: http://localhost:3001
+
+OR use port 8080:
+  npx serve -s build -p 8080
+
+Then open: http://localhost:8080
+
+================================================================================
+SOLUTION 3: KILL ALL NODE PROCESSES (Nuclear Option)
+================================================================================
+
+If nothing else works:
+
+  pkill -f node
+
+This kills ALL Node.js processes. Then try again.
+
+WARNING: This will stop ALL Node.js apps running on your computer.
+
+================================================================================
+QUICK COPY-PASTE COMMANDS
+================================================================================
+
+# Kill process on port 3000
+kill -9 $(lsof -ti:3000)
+
+# Or use different port
+cd "/Users/endiroswendi/Documents/ Old Laptop Documents/CAO/FINANCIAL REPORT/pos-inventory-system/frontend"
+npx serve -s build -p 3001
+
+# Then open: http://localhost:3001
+
+================================================================================
+STEP-BY-STEP: Complete Fix
+================================================================================
+
+1. Kill what's using port 3000:
+   kill -9 $(lsof -ti:3000)
+
+2. Wait 2 seconds
+
+3. Navigate to frontend:
+   cd "/Users/endiroswendi/Documents/ Old Laptop Documents/CAO/FINANCIAL REPORT/pos-inventory-system/frontend"
+
+4. Build (if not already built):
+   npm run build
+
+5. Serve on port 3000:
+   npx serve -s build -p 3000
+
+6. Open browser:
+   http://localhost:3000
+
+================================================================================
+ALTERNATIVE: Use React Dev Server Instead
+================================================================================
+
+If you just want to test the app (not the built version):
+
+  cd "/Users/endiroswendi/Documents/ Old Laptop Documents/CAO/FINANCIAL REPORT/pos-inventory-system/frontend"
+  npm start
+
+This uses React's dev server (usually port 3000, but will ask to use different port if 3000 is busy).
+
+================================================================================
+TROUBLESHOOTING
+================================================================================
+
+PROBLEM: Still says port in use after killing
+----------------------------------------------
+SOLUTION:
+1. Wait 5 seconds (port takes time to free up)
+2. Check again: lsof -ti:3000
+3. If still shows PID, kill it again
+4. Or just use different port (3001, 8080, etc.)
+
+PROBLEM: Can't find process
+---------------------------
+SOLUTION:
+- Port might already be free
+- Try: npx serve -s build -p 3000
+- If still error, use different port
+
+PROBLEM: Permission denied when killing
+---------------------------------------
+SOLUTION:
+- Use sudo (but be careful):
+  sudo kill -9 $(lsof -ti:3000)
+- Or just use different port instead
+
+================================================================================
+RECOMMENDED: Use Different Port
+================================================================================
+
+Easiest solution - just use port 3001:
+
+  cd "/Users/endiroswendi/Documents/ Old Laptop Documents/CAO/FINANCIAL REPORT/pos-inventory-system/frontend"
+  npx serve -s build -p 3001
+
+Then open: http://localhost:3001
+
+No need to kill anything!
+
+================================================================================
+

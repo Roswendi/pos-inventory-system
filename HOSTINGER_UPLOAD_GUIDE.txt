@@ -1,0 +1,149 @@
+================================================================================
+    HOSTINGER UPLOAD GUIDE - FIX "UNSUPPORTED FRAMEWORK" ERROR
+================================================================================
+
+✅ THE PROBLEM:
+===============
+Hostinger's automated deployment doesn't process tar.gz files.
+It expects:
+- Files already extracted
+- package.json in ROOT directory
+- Specific folder structure
+
+================================================================================
+
+SOLUTION 1: CREATE HOSTINGER-COMPATIBLE PACKAGE
+================================================
+
+I've created a new script: HOSTINGER_DEPLOY.sh
+
+Run it:
+  bash HOSTINGER_DEPLOY.sh
+
+This creates: hostinger-pos-system.tar.gz
+
+Then:
+1. Extract it on your computer
+2. Upload the EXTRACTED files (not the tar.gz)
+3. Hostinger will recognize the structure
+
+================================================================================
+
+SOLUTION 2: MANUAL UPLOAD (EASIEST)
+===================================
+
+STEP 1: Extract Current Package
+-------------------------------
+On your computer:
+1. Extract pos-system-deploy.tar.gz
+2. You get: backend/, frontend-build/, etc.
+
+STEP 2: Upload via FTP (BEST METHOD)
+------------------------------------
+1. Get FTP credentials from Hostinger hPanel
+2. Download FileZilla (free): https://filezilla-project.org
+3. Connect to Hostinger
+4. Upload folders:
+   - backend/ → Upload to server
+   - frontend/build/ → Upload as public/ or www/
+
+STEP 3: Configure on Server
+---------------------------
+1. SSH to server (or use Terminal in hPanel)
+2. Navigate to uploaded folder
+3. Run: cd backend && npm install --production
+4. Start: node server.js (or use PM2)
+
+================================================================================
+
+SOLUTION 3: USE HOSTINGER FILE MANAGER
+=======================================
+
+STEP 1: Extract Locally
+-----------------------
+Extract pos-system-deploy.tar.gz on your computer
+
+STEP 2: Upload via File Manager
+--------------------------------
+1. Log into Hostinger hPanel
+2. Go to File Manager
+3. Navigate to your domain folder
+4. Click "Upload"
+5. Select ALL files from extracted folder
+6. Upload them
+
+IMPORTANT: Upload files, NOT the tar.gz archive!
+
+STEP 3: Configure
+----------------
+1. Use Terminal in hPanel
+2. Navigate to uploaded folder
+3. Install dependencies
+4. Start application
+
+================================================================================
+
+WHY THE ERROR OCCURS:
+=====================
+
+Hostinger's automated deployment:
+✗ Doesn't process tar.gz files
+✗ Expects package.json in root
+✗ Needs specific structure
+✗ Requires files already extracted
+
+Our original package:
+✗ Has backend/ and frontend-build/ separate
+✗ package.json is in backend/
+✗ Doesn't match expected structure
+
+NEW Hostinger package:
+✓ package.json in root
+✓ server.js in root
+✓ public/ folder for frontend
+✓ Matches Hostinger's expected structure
+
+================================================================================
+
+RECOMMENDED METHOD:
+===================
+
+1. Run: bash HOSTINGER_DEPLOY.sh
+2. Extract: hostinger-pos-system.tar.gz
+3. Upload EXTRACTED files via FTP
+4. Configure on server
+
+OR (Simpler):
+1. Extract pos-system-deploy.tar.gz
+2. Upload backend/ and frontend/build/ via FTP
+3. Configure manually
+
+================================================================================
+
+QUICK STEPS:
+============
+
+OPTION A: Use New Script
+------------------------
+  bash HOSTINGER_DEPLOY.sh
+  # Extract the created tar.gz
+  # Upload extracted files
+
+OPTION B: Manual Upload
+------------------------
+  # Extract pos-system-deploy.tar.gz
+  # Upload backend/ and frontend/build/ via FTP
+  # Configure on server
+
+================================================================================
+
+IMPORTANT NOTES:
+================
+
+✅ NEVER upload tar.gz to Hostinger's automated deployment
+✅ ALWAYS extract first, then upload files
+✅ Use FTP for best results
+✅ Maintain folder structure when uploading
+
+================================================================================
+

@@ -1,0 +1,139 @@
+[
+  {
+    "id": "11000",
+    "code": "11000",
+    "name": "Kas & Setara Kas",
+    "type": "asset",
+    "category": "current",
+    "balance": 0
+  },
+  {
+    "id": "12000",
+    "code": "12000",
+    "name": "Piutang Usaha",
+    "type": "asset",
+    "category": "current",
+    "balance": 0
+  },
+  {
+    "id": "13000",
+    "code": "13000",
+    "name": "Persediaan",
+    "type": "asset",
+    "category": "current",
+    "balance": 0
+  },
+  {
+    "id": "14000",
+    "code": "14000",
+    "name": "Aset Tetap",
+    "type": "asset",
+    "category": "fixed",
+    "balance": 0
+  },
+  {
+    "id": "21000",
+    "code": "21000",
+    "name": "Utang Usaha",
+    "type": "liability",
+    "category": "current",
+    "balance": 0
+  },
+  {
+    "id": "22000",
+    "code": "22000",
+    "name": "Utang Bank",
+    "type": "liability",
+    "category": "long-term",
+    "balance": 0
+  },
+  {
+    "id": "23000",
+    "code": "23000",
+    "name": "Utang Pajak",
+    "type": "liability",
+    "category": "current",
+    "balance": 0
+  },
+  {
+    "id": "31000",
+    "code": "31000",
+    "name": "Modal Disetor",
+    "type": "equity",
+    "category": "capital",
+    "balance": 0
+  },
+  {
+    "id": "32000",
+    "code": "32000",
+    "name": "Laba Ditahan",
+    "type": "equity",
+    "category": "retained",
+    "balance": 0
+  },
+  {
+    "id": "33000",
+    "code": "33000",
+    "name": "Laba Tahun Berjalan",
+    "type": "equity",
+    "category": "current",
+    "balance": 0
+  },
+  {
+    "id": "41000",
+    "code": "41000",
+    "name": "Pendapatan Penjualan",
+    "type": "revenue",
+    "category": "sales",
+    "balance": 0
+  },
+  {
+    "id": "51000",
+    "code": "51000",
+    "name": "Beban Pokok Penjualan",
+    "type": "expense",
+    "category": "cogs",
+    "balance": 0
+  },
+  {
+    "id": "52000",
+    "code": "52000",
+    "name": "Beban Gaji & Upah",
+    "type": "expense",
+    "category": "operating",
+    "balance": 0
+  },
+  {
+    "id": "53000",
+    "code": "53000",
+    "name": "Beban Sewa",
+    "type": "expense",
+    "category": "operating",
+    "balance": 0
+  },
+  {
+    "id": "54000",
+    "code": "54000",
+    "name": "Beban Utilitas",
+    "type": "expense",
+    "category": "operating",
+    "balance": 0
+  },
+  {
+    "id": "55000",
+    "code": "55000",
+    "name": "Beban Pemasaran",
+    "type": "expense",
+    "category": "operating",
+    "balance": 0
+  },
+  {
+    "id": "56000",
+    "code": "56000",
+    "name": "Beban Administrasi",
+    "type": "expense",
+    "category": "operating",
+    "balance": 0
+  }
+]
+

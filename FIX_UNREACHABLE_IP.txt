@@ -1,0 +1,178 @@
+================================================================================
+    FIX: IP 192.168.0.200 UNREACHABLE FROM OTHER DEVICES
+================================================================================
+
+✅ TROUBLESHOOTING STEPS
+================================================================================
+
+STEP 1: VERIFY SERVER IS RUNNING
+=================================
+
+Check if server is running:
+  lsof -ti:5001
+
+If empty, server is NOT running!
+Start it:
+  cd backend
+  node server.js
+
+================================================================================
+
+STEP 2: CHECK FIREWALL SETTINGS (macOS)
+========================================
+
+macOS Firewall might be blocking connections!
+
+OPTION A: Allow Node.js in Firewall
+------------------------------------
+1. System Settings → Network → Firewall
+2. Click "Options"
+3. Look for "Node" or "node"
+4. Make sure it's set to "Allow incoming connections"
+5. If not listed, click "+" to add it
+
+OPTION B: Temporarily Disable Firewall (For Testing)
+----------------------------------------------------
+1. System Settings → Network → Firewall
+2. Turn OFF firewall temporarily
+3. Try accessing from other device
+4. If it works, firewall was the problem!
+5. Re-enable firewall and add Node.js exception
+
+OPTION C: Add Port Exception
+----------------------------
+1. System Settings → Network → Firewall → Options
+2. Click "+" to add application
+3. Navigate to: /usr/local/bin/node
+   OR: /usr/bin/node
+   OR: Wherever Node.js is installed
+4. Set to "Allow incoming connections"
+
+================================================================================
+
+STEP 3: VERIFY IP ADDRESS
+==========================
+
+Your IP might have changed! Check current IP:
+
+  ifconfig | grep "inet " | grep -v 127.0.0.1
+
+Look for something like:
+  192.168.0.xxx
+  192.168.1.xxx
+  10.0.0.xxx
+
+Use the NEW IP address on other device!
+
+================================================================================
+
+STEP 4: CHECK BOTH DEVICES ON SAME NETWORK
+==========================================
+
+VERIFY:
+- Both devices connected to SAME WiFi network?
+- Not on different networks?
+- WiFi name (SSID) is the same?
+
+If different networks, it won't work!
+
+================================================================================
+
+STEP 5: TEST CONNECTION FROM SERVER
+===================================
+
+On the server computer, test if it's listening:
+
+  curl http://localhost:5001/api/health
+
+Should return: {"status":"OK",...}
+
+If this works, server is running correctly.
+
+================================================================================
+
+STEP 6: TEST FROM SERVER USING IP
+==================================
+
+On the server computer, try:
+  curl http://192.168.0.200:5001/api/health
+
+If this works, server is accessible via IP.
+If this fails, firewall is blocking!
+
+================================================================================
+
+QUICK FIX - ALL STEPS:
+======================
+
+1. Stop server (if running):
+   lsof -ti:5001 | xargs kill
+
+2. Check firewall:
+   System Settings → Network → Firewall → Turn OFF (temporarily)
+
+3. Restart server:
+   cd backend
+   node server.js
+
+4. Note the IP address shown
+
+5. On other device, try the IP address
+
+6. If it works, re-enable firewall and add Node.js exception
+
+================================================================================
+
+ALTERNATIVE: USE DIFFERENT PORT
+================================
+
+If port 5001 is blocked, try port 3000:
+
+1. Edit backend/server.js
+2. Change: const PORT = 3000;
+3. Restart server
+4. Access: http://192.168.0.200:3000
+
+================================================================================
+
+VERIFY NETWORK CONNECTIVITY:
+============================
+
+From other device, try to ping the server:
+
+  ping 192.168.0.200
+
+If ping works but browser doesn't:
+→ Firewall blocking port 5001
+
+If ping doesn't work:
+→ Different network or wrong IP
+
+================================================================================
+
+COMMON ISSUES:
+==============
+
+ISSUE: "Connection refused"
+---------------------------
+→ Server not running
+→ Start server
+
+ISSUE: "Connection timed out"
+-----------------------------
+→ Firewall blocking
+→ Check firewall settings
+
+ISSUE: "Host unreachable"
+-------------------------
+→ Wrong IP address
+→ Different network
+→ Check IP and network
+
+ISSUE: Works on localhost but not IP
+------------------------------------
+→ Firewall blocking external connections
+→ Add firewall exception
+
+================================================================================
+

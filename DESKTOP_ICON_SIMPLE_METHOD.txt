@@ -1,0 +1,191 @@
+================================================================================
+    CREATE DESKTOP ICON - SIMPLE METHOD FOR MAC
+================================================================================
+
+✅ METHOD 1: Use Automator (Easiest - No Terminal)
+================================================================================
+
+STEP 1: Open Automator
+-----------------------
+1. Press Cmd+Space
+2. Type "Automator"
+3. Press Enter
+
+STEP 2: Create New Application
+------------------------------
+1. Choose "Application"
+2. Click "Choose"
+
+STEP 3: Add "Run Shell Script" Action
+-------------------------------------
+1. In the left sidebar, search for "Run Shell Script"
+2. Drag it to the workflow area
+
+STEP 4: Add Script
+------------------
+In the script box, paste this:
+
+  cd "/Users/endiroswendi/Documents/ Old Laptop Documents/CAO/FINANCIAL REPORT/pos-inventory-system/backend"
+  
+  # Check if server is running
+  if ! lsof -ti:5001 > /dev/null 2>&1; then
+      # Start server in background
+      node server.js > /dev/null 2>&1 &
+      sleep 3
+  fi
+  
+  # Open browser
+  open "http://localhost:5001"
+
+STEP 5: Save Application
+-------------------------
+1. File → Save
+2. Name: "TDO POS System"
+3. Save to: Desktop
+4. File Format: Application
+5. Click "Save"
+
+STEP 6: Add Icon (Optional)
+----------------------------
+1. Right-click the app on desktop
+2. Select "Get Info"
+3. Click the icon in top-left
+4. Press Cmd+C to copy an image
+5. Click the icon again
+6. Press Cmd+V to paste
+
+Done! Double-click the icon to launch!
+
+================================================================================
+
+✅ METHOD 2: Use the Script (Automated)
+================================================================================
+
+Run this command:
+
+  cd "/Users/endiroswendi/Documents/ Old Laptop Documents/CAO/FINANCIAL REPORT/pos-inventory-system"
+  ./CREATE_DESKTOP_ICON_MAC.sh
+
+This will create a .app bundle on your desktop.
+
+================================================================================
+
+✅ METHOD 3: Create Alias/Shortcut (Simplest)
+================================================================================
+
+STEP 1: Create Launch Script
+-----------------------------
+1. Open TextEdit
+2. Paste this:
+
+  #!/bin/bash
+  cd "/Users/endiroswendi/Documents/ Old Laptop Documents/CAO/FINANCIAL REPORT/pos-inventory-system/backend"
+  if ! lsof -ti:5001 > /dev/null 2>&1; then
+      node server.js &
+      sleep 3
+  fi
+  open "http://localhost:5001"
+
+3. Save as: "Start TDO POS.sh" on Desktop
+4. Open Terminal
+5. Run: chmod +x ~/Desktop/"Start TDO POS.sh"
+
+STEP 2: Create Alias
+--------------------
+1. Right-click the script file
+2. Select "Make Alias"
+3. Rename alias to "TDO POS System"
+4. Drag to desktop
+
+STEP 3: Change Icon (Optional)
+------------------------------
+1. Right-click alias → Get Info
+2. Click icon → Copy image → Paste
+
+================================================================================
+
+✅ METHOD 4: Browser Bookmark (Easiest for Quick Access)
+================================================================================
+
+STEP 1: Start Server
+---------------------
+  cd backend
+  node server.js
+
+STEP 2: Open Browser
+--------------------
+  http://localhost:5001
+
+STEP 3: Add to Bookmarks
+-------------------------
+1. Press Cmd+D (or click bookmark icon)
+2. Name: "TDO POS System"
+3. Save
+
+STEP 4: Add to Dock (macOS)
+---------------------------
+1. Drag bookmark to Dock
+2. Or right-click bookmark → "Add to Dock"
+
+Now you can click it in Dock to open!
+
+================================================================================
+
+✅ METHOD 5: Create .app Bundle Manually
+================================================================================
+
+STEP 1: Create Folder Structure
+--------------------------------
+On Desktop, create:
+  TDO POS System.app/Contents/MacOS/
+
+STEP 2: Create Launcher Script
+-------------------------------
+Create file: TDO POS System.app/Contents/MacOS/launcher
+
+Content:
+  #!/bin/bash
+  cd "/Users/endiroswendi/Documents/ Old Laptop Documents/CAO/FINANCIAL REPORT/pos-inventory-system/backend"
+  if ! lsof -ti:5001 > /dev/null 2>&1; then
+      osascript -e 'tell app "Terminal" to do script "cd '"'"'/Users/endiroswendi/Documents/ Old Laptop Documents/CAO/FINANCIAL REPORT/pos-inventory-system/backend'"'"' && node server.js"'
+      sleep 5
+  fi
+  open "http://localhost:5001"
+
+Make executable:
+  chmod +x "TDO POS System.app/Contents/MacOS/launcher"
+
+STEP 3: Create Info.plist
+--------------------------
+Create: TDO POS System.app/Contents/Info.plist
+
+Content:
+  <?xml version="1.0" encoding="UTF-8"?>
+  <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+  <plist version="1.0">
+  <dict>
+      <key>CFBundleExecutable</key>
+      <string>launcher</string>
+      <key>CFBundleName</key>
+      <string>TDO POS System</string>
+  </dict>
+  </plist>
+
+Done! Double-click to launch.
+
+================================================================================
+
+QUICKEST METHOD - RECOMMENDED:
+===============================
+
+1. Open Automator
+2. New → Application
+3. Add "Run Shell Script"
+4. Paste the script (from Method 1)
+5. Save to Desktop as "TDO POS System"
+6. Done!
+
+Double-click the icon to launch! 🚀
+
+================================================================================
+

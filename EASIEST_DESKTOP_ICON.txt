@@ -1,0 +1,89 @@
+================================================================================
+    EASIEST WAY TO CREATE DESKTOP ICON - NO AUTOMATOR NEEDED!
+================================================================================
+
+✅ I'VE CREATED THE FILE FOR YOU!
+================================================================================
+
+I've created a file called "Start_TDO_POS.command" and copied it to your Desktop!
+
+LOOK ON YOUR DESKTOP:
+=====================
+
+You should see:
+  "Start_TDO_POS.command"
+
+If you don't see it:
+  1. Press: Cmd + Option + Esc
+  2. Select: Finder
+  3. Click: "Relaunch"
+
+================================================================================
+
+TO USE IT:
+==========
+
+Just double-click "Start_TDO_POS.command" on your desktop!
+
+It will:
+✓ Start the server (if not running)
+✓ Open browser to http://localhost:5001
+✓ Launch your POS system!
+
+================================================================================
+
+TO CHANGE THE ICON:
+==================
+
+STEP 1: Get an Image
+--------------------
+Find any image/icon you want to use
+
+STEP 2: Change Icon
+-------------------
+1. Right-click "Start_TDO_POS.command" on desktop
+2. Select: "Get Info"
+3. Click the small icon in top-left corner
+4. Press: Cmd + C (copy your image)
+5. Click the icon again
+6. Press: Cmd + V (paste)
+
+Done! Custom icon applied!
+
+================================================================================
+
+IF FILE IS NOT ON DESKTOP:
+==========================
+
+Copy it manually:
+
+1. Open Finder
+2. Go to: pos-inventory-system folder
+3. Find: "Start_TDO_POS.command"
+4. Drag it to Desktop
+
+================================================================================
+
+ALTERNATIVE: Create Alias
+=========================
+
+1. Right-click "Start_TDO_POS.command"
+2. Select: "Make Alias"
+3. Rename alias to: "TDO POS System"
+4. Drag alias to desktop
+
+Now you have a nice alias with custom name!
+
+================================================================================
+
+SUMMARY:
+========
+
+✅ File created: Start_TDO_POS.command
+✅ Copied to Desktop
+✅ Ready to use!
+
+Just double-click it on desktop to launch! 🚀
+
+================================================================================
+

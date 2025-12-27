@@ -1,0 +1,366 @@
+================================================================================
+    POS SYSTEM ENHANCEMENTS - COMPLETE GUIDE
+    Item Cancellation, Reports, and Login System
+================================================================================
+
+✅ NEW FEATURES IMPLEMENTED:
+1. POS Login System (User ID & Password)
+2. Item Cancellation with Manager Approval
+3. 8 Comprehensive POS Reports
+4. Role-Based Access (Cashier, Manager, Admin)
+
+================================================================================
+1. POS LOGIN SYSTEM
+================================================================================
+
+ACCESSING POS:
+- Navigate to: http://localhost:3000/pos-login
+- Enter User ID and Password
+- Only users with cashier, manager, or admin roles can access POS
+
+DEFAULT CREDENTIALS:
+- Cashier: 
+  User ID: cashier
+  Password: admin123
+  
+- Manager:
+  User ID: manager
+  Password: admin123
+  
+- Admin:
+  User ID: admin
+  Password: admin123
+
+FEATURES:
+- Separate login from main application
+- Role-based access control
+- Session management
+- Logout functionality
+
+================================================================================
+2. ITEM CANCELLATION WITH MANAGER APPROVAL
+================================================================================
+
+HOW IT WORKS:
+1. Cashier creates an order
+2. After order is created, cashier can request item cancellation
+3. Cancellation request requires:
+   - Item selection
+   - Reason for cancellation
+4. Request is sent to manager for approval
+5. Manager can approve or reject from POS Reports page
+
+CANCELLATION WORKFLOW:
+-------------------
+STEP 1: Create Order
+- Add items to cart
+- Complete checkout
+- Order is created
+
+STEP 2: Request Cancellation
+- Click "Cancel" button next to item in cart (after order created)
+- Enter cancellation reason
+- Click "Submit Request"
+- Request is pending manager approval
+
+STEP 3: Manager Approval
+- Manager goes to POS Reports page
+- Sees pending cancellation requests
+- Can approve or reject each request
+
+STEP 4: Approval Result
+- If approved:
+  * Item is removed from order
+  * Stock is restored
+  * Order totals are recalculated
+- If rejected:
+  * Request is marked as rejected
+  * Order remains unchanged
+
+MANAGER ACTIONS:
+- View all pending cancellations
+- Approve cancellations
+- Reject cancellations with reason
+- View cancellation history
+
+================================================================================
+3. POS REPORTS
+================================================================================
+
+ACCESS REPORTS:
+- Navigate to: POS Reports (in sidebar)
+- Or: http://localhost:3000/pos-reports
+- Select report type from sidebar
+- Set date filters
+- Click "Generate Report"
+
+AVAILABLE REPORTS:
+------------------
+
+1. DAILY CLOSING REPORT
+   - Shows daily sales summary
+   - Total orders, revenue, items sold
+   - Payment method breakdown
+   - Cancellations for the day
+   - Filter: Date
+
+2. MONTHLY POS REPORT
+   - Monthly sales summary
+   - Daily breakdown
+   - Average order value
+   - Total cancellations
+   - Filter: Year, Month
+
+3. PROMOTIONAL REPORT
+   - All promotional orders
+   - Discount amounts given
+   - Promotion performance
+   - Filter: Date Range
+
+4. WASTE REPORT
+   - Product waste tracking
+   - Waste by product
+   - Total waste value
+   - Filter: Date Range
+
+5. CHANGE PAYMENT REPORT
+   - Payment method changes
+   - Changes by method
+   - Total change transactions
+   - Filter: Date Range
+
+6. GUEST COMMON REPORT
+   - Customer statistics
+   - Top customers
+   - Walk-in vs registered
+   - Customer spending patterns
+   - Filter: Date Range
+
+7. MOVE TABLE REPORT
+   - Table movement tracking
+   - Moves by table
+   - Total table moves
+   - Filter: Date Range
+
+8. BRANCH MENU REPORT
+   - Product performance by branch
+   - Top selling products
+   - Revenue by product
+   - Filter: Date Range, Branch ID
+
+REPORT FEATURES:
+- Date range filtering
+- Export to JSON
+- Real-time data
+- Detailed breakdowns
+- Summary statistics
+
+================================================================================
+4. USER ROLES
+================================================================================
+
+ROLES:
+------
+- ADMIN: Full system access
+- MANAGER: POS access + approval rights
+- CASHIER: POS access only
+
+ROLE PERMISSIONS:
+----------------
+ADMIN:
+- All features
+- User management
+- System configuration
+
+MANAGER:
+- POS access
+- Approve/reject cancellations
+- View all reports
+- Manage orders
+
+CASHIER:
+- POS access
+- Create orders
+- Request cancellations
+- View own orders
+
+================================================================================
+5. HOW TO USE
+================================================================================
+
+STEP 1: Login to POS
+--------------------
+1. Go to http://localhost:3000/pos-login
+2. Enter User ID: cashier
+3. Enter Password: admin123
+4. Click "Login to POS"
+
+STEP 2: Create Order
+--------------------
+1. Select products
+2. Add to cart
+3. Choose customer (optional)
+4. Select payment method
+5. Click "Checkout"
+
+STEP 3: Cancel Item (if needed)
+-------------------------------
+1. After order is created
+2. Click "Cancel" button next to item
+3. Enter cancellation reason
+4. Click "Submit Request"
+5. Wait for manager approval
+
+STEP 4: Manager Approval
+------------------------
+1. Manager logs in
+2. Goes to POS Reports
+3. Sees pending cancellations
+4. Clicks "Approve" or "Reject"
+5. If approved, item is removed and stock restored
+
+STEP 5: View Reports
+--------------------
+1. Go to POS Reports page
+2. Select report type
+3. Set date filters
+4. Click "Generate Report"
+5. View results
+6. Export if needed
+
+================================================================================
+6. API ENDPOINTS
+================================================================================
+
+AUTHENTICATION:
+- POST /api/auth/login - Login (supports POS users)
+
+POS CANCELLATION:
+- POST /api/pos/cancel-item - Request item cancellation
+- GET /api/pos/cancellations/pending - Get pending cancellations
+- POST /api/pos/cancellations/:id/approve - Approve cancellation
+- POST /api/pos/cancellations/:id/reject - Reject cancellation
+- GET /api/pos/cancellations - Get all cancellations
+
+POS REPORTS:
+- GET /api/pos-reports/daily-closing - Daily closing report
+- GET /api/pos-reports/monthly - Monthly report
+- GET /api/pos-reports/promotional - Promotional report
+- GET /api/pos-reports/waste - Waste report
+- GET /api/pos-reports/change-payment - Change payment report
+- GET /api/pos-reports/guest-common - Guest common report
+- GET /api/pos-reports/move-table - Move table report
+- GET /api/pos-reports/branch-menu - Branch menu report
+
+================================================================================
+7. DATA STORAGE
+================================================================================
+
+NEW DATA FILES:
+- data/sales/cancellations.json - Cancellation requests
+- data/sales/waste.json - Waste records
+- data/sales/promotions.json - Promotion records
+- data/sales/tables.json - Table movement records
+- data/sales/payments.json - Payment change records
+
+USER ROLES:
+- Stored in data/users/users.json
+- Default users created on first run:
+  * admin (admin role)
+  * manager (manager role)
+  * cashier (cashier role)
+
+================================================================================
+8. TROUBLESHOOTING
+================================================================================
+
+PROBLEM: Cannot login to POS
+------------------------------
+SOLUTION:
+- Check user role (must be cashier, manager, or admin)
+- Verify credentials
+- Check backend is running
+- Check browser console for errors
+
+PROBLEM: Cancellation button not showing
+-----------------------------------------
+SOLUTION:
+- Make sure order is created first
+- Refresh page
+- Check if item exists in order
+
+PROBLEM: Manager cannot approve
+-------------------------------
+SOLUTION:
+- Verify manager role
+- Check cancellation request status
+- Ensure backend is running
+- Check browser console
+
+PROBLEM: Reports not loading
+-----------------------------
+SOLUTION:
+- Check date filters are set correctly
+- Verify backend is running
+- Check API endpoints
+- Review browser console for errors
+
+PROBLEM: Cannot see pending cancellations
+------------------------------------------
+SOLUTION:
+- Refresh POS Reports page
+- Check if cancellations exist
+- Verify manager role
+- Check backend logs
+
+================================================================================
+9. SECURITY FEATURES
+================================================================================
+
+- Separate POS authentication
+- Role-based access control
+- Token-based authentication
+- Manager approval required for cancellations
+- Audit trail for all cancellations
+
+================================================================================
+10. QUICK REFERENCE
+================================================================================
+
+LOGIN:
+- URL: /pos-login
+- Cashier: cashier / admin123
+- Manager: manager / admin123
+
+CANCEL ITEM:
+1. Create order
+2. Click "Cancel" on item
+3. Enter reason
+4. Submit request
+
+APPROVE CANCELLATION:
+1. Go to POS Reports
+2. Find pending request
+3. Click "Approve"
+
+VIEW REPORTS:
+1. Go to POS Reports
+2. Select report
+3. Set filters
+4. Generate
+
+================================================================================
+SUMMARY
+================================================================================
+
+✅ POS Login System - Separate authentication for POS
+✅ Item Cancellation - With manager approval workflow
+✅ 8 Reports - Comprehensive POS reporting
+✅ Role Management - Cashier, Manager, Admin roles
+✅ Manager Approval - Required for item cancellations
+✅ Audit Trail - All actions are logged
+
+All features are fully functional and ready to use!
+
+================================================================================
+

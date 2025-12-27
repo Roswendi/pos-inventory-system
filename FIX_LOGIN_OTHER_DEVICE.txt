@@ -1,0 +1,198 @@
+================================================================================
+    FIX: LOGIN NOT WORKING ON OTHER DEVICES
+================================================================================
+
+✅ PROBLEM IDENTIFIED
+================================================================================
+
+THE ISSUE:
+==========
+When accessing from another device, the frontend might still be using
+"localhost" for API calls, or the browser has cached old code.
+
+THE FIX:
+========
+✅ Frontend rebuilt with dynamic API detection
+✅ API automatically uses the IP address when accessed via IP
+✅ Server CORS configured correctly
+
+================================================================================
+
+CRITICAL STEPS TO FIX:
+======================
+
+STEP 1: Rebuild Frontend (DONE)
+-------------------------------
+Frontend has been rebuilt with the fix.
+
+STEP 2: Restart Server
+----------------------
+1. Stop current server (Ctrl+C in Terminal)
+2. Start server:
+   cd backend
+   node server.js
+
+STEP 3: CLEAR BROWSER CACHE ON OTHER DEVICE (CRITICAL!)
+-------------------------------------------------------
+This is the MOST IMPORTANT step!
+
+On the OTHER device:
+1. Open browser
+2. Go to: http://192.168.0.200:5001
+3. Press: Ctrl+Shift+Delete (Windows) or Cmd+Shift+Delete (Mac)
+4. Select: "Cached images and files"
+5. Click: "Clear data"
+6. OR: Hard refresh with Ctrl+Shift+R (Windows) or Cmd+Shift+R (Mac)
+
+STEP 4: Try Login Again
+----------------------
+Username: admin
+Password: admin123
+
+Should work now! ✅
+
+================================================================================
+
+VERIFICATION:
+=============
+
+TEST 1: Check API from Other Device
+------------------------------------
+On the other device browser, open console (F12) and run:
+  fetch('http://192.168.0.200:5001/api/health')
+    .then(r => r.json())
+    .then(console.log)
+
+Should return: {"status":"OK",...}
+
+TEST 2: Check Login API
+-----------------------
+On the other device browser console:
+  fetch('http://192.168.0.200:5001/api/auth/login', {
+    method: 'POST',
+    headers: {'Content-Type': 'application/json'},
+    body: JSON.stringify({username: 'admin', password: 'admin123'})
+  })
+  .then(r => r.json())
+  .then(console.log)
+
+Should return a token if working.
+
+================================================================================
+
+IF STILL NOT WORKING:
+=====================
+
+CHECK 1: Browser Console Errors
+--------------------------------
+On the other device:
+1. Press F12 (or right-click → Inspect)
+2. Go to "Console" tab
+3. Look for red error messages
+4. Check what API URL is being used
+
+CHECK 2: Network Tab
+--------------------
+1. Press F12 → "Network" tab
+2. Try to login
+3. Look for the login request
+4. Check:
+   - What URL is being called?
+   - Is it using localhost or 192.168.0.200?
+   - What's the response?
+
+CHECK 3: Verify Server is Running
+----------------------------------
+On server computer:
+  lsof -ti:5001
+
+Should show a process number.
+
+CHECK 4: Test API Directly
+---------------------------
+On the other device browser, go to:
+  http://192.168.0.200:5001/api/health
+
+Should show: {"status":"OK",...}
+
+If this doesn't work, server is not accessible.
+
+================================================================================
+
+COMMON ISSUES:
+==============
+
+ISSUE: "Network Error" or "Failed to fetch"
+-------------------------------------------
+→ Browser cache has old code
+→ Clear cache completely
+→ Hard refresh (Ctrl+Shift+R)
+
+ISSUE: "CORS error"
+-------------------
+→ Server CORS is configured, but check if it's running
+→ Restart server
+
+ISSUE: "Invalid credentials"
+----------------------------
+→ Make sure username: admin (lowercase)
+→ Make sure password: admin123 (lowercase)
+→ No spaces
+
+ISSUE: Login button does nothing
+--------------------------------
+→ Check browser console for errors
+→ Check network tab for failed requests
+→ Verify API URL is correct (should be 192.168.0.200, not localhost)
+
+================================================================================
+
+DEBUGGING STEPS:
+================
+
+1. On other device, open browser console (F12)
+2. Check what API_BASE_URL is being used:
+   - Look in Network tab
+   - Should show: http://192.168.0.200:5001/api/auth/login
+   - NOT: http://localhost:5001/api/auth/login
+
+3. If it shows localhost:
+   → Browser cache issue
+   → Clear cache completely
+   → Hard refresh
+
+4. If it shows 192.168.0.200 but still fails:
+   → Check server is running
+   → Check network connectivity
+   → Check firewall
+
+================================================================================
+
+QUICK FIX CHECKLIST:
+====================
+
+□ Server is running on main computer
+□ Frontend has been rebuilt
+□ Browser cache cleared on other device
+□ Hard refresh done (Ctrl+Shift+R)
+□ Using correct URL: http://192.168.0.200:5001
+□ Username: admin (lowercase)
+□ Password: admin123 (lowercase)
+□ Checked browser console for errors
+
+================================================================================
+
+TECHNICAL DETAILS:
+==================
+
+The frontend now uses:
+  window.location.hostname
+
+This automatically detects:
+- If accessed via localhost → uses localhost:5001/api
+- If accessed via IP → uses 192.168.0.200:5001/api
+
+This ensures API calls go to the correct server!
+
+================================================================================
+

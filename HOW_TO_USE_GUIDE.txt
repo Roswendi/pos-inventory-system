@@ -1,0 +1,56 @@
+================================================================================
+    HOW TO USE THE DEPLOYMENT GUIDE IN MICROSOFT WORD
+================================================================================
+
+STEP 1: OPEN THE FILE
+----------------------
+1. Navigate to: pos-inventory-system/MOBILE_WEB_DEPLOYMENT_GUIDE.txt
+2. Double-click to open (will open in TextEdit on Mac, Notepad on Windows)
+3. OR right-click → "Open With" → Microsoft Word
+
+STEP 2: OPEN IN MICROSOFT WORD
+-------------------------------
+1. Open Microsoft Word
+2. File → Open
+3. Select: MOBILE_WEB_DEPLOYMENT_GUIDE.txt
+4. Word will ask about encoding - choose "UTF-8" or "Windows (Default)"
+
+STEP 3: FORMAT FOR PRINTING
+---------------------------
+1. Select all text: Cmd+A (Mac) or Ctrl+A (Windows)
+2. Set font: Arial or Calibri, size 10-11
+3. Set margins: File → Page Setup → Margins: 0.5" or 1cm
+4. Add page numbers: Insert → Page Number
+5. Optional: Add header/footer with your business name
+
+STEP 4: PRINT
+-------------
+1. File → Print
+2. Choose your printer
+3. Select "Print All Pages"
+4. Click Print
+
+ALTERNATIVE: COPY TO WORD DOCUMENT
+-----------------------------------
+1. Open MOBILE_WEB_DEPLOYMENT_GUIDE.txt in any text editor
+2. Select All (Cmd+A / Ctrl+A)
+3. Copy (Cmd+C / Ctrl+C)
+4. Open Microsoft Word
+5. Paste (Cmd+V / Ctrl+V)
+6. Format as needed
+7. Save as .docx file
+
+TIPS FOR BETTER PRINTING:
+--------------------------
+- Use "Print on both sides" to save paper
+- Use "2 pages per sheet" for smaller print
+- Add a cover page with your business name
+- Print in color if you have a color printer
+- Consider binding or stapling for easy reference
+
+FILE LOCATION:
+--------------
+/Users/endiroswendi/Documents/ Old Laptop Documents/CAO/FINANCIAL REPORT/pos-inventory-system/MOBILE_WEB_DEPLOYMENT_GUIDE.txt
+
+================================================================================
+

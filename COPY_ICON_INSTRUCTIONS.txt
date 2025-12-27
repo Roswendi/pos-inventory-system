@@ -1,0 +1,250 @@
+================================================================================
+    HOW TO COPY YOUR TDO ICON FILES
+    Step-by-Step Instructions
+================================================================================
+
+WHERE YOUR ICONS SHOULD BE:
+---------------------------
+frontend/public/logo192.png
+frontend/public/logo512.png
+
+================================================================================
+METHOD 1: USING FINDER (Easiest - Mac)
+================================================================================
+
+STEP 1: Find Your Icon Files
+------------------------------
+1. Open Finder
+2. Navigate to where you saved your TDO icons
+   (Usually in Downloads folder or Desktop)
+3. You should have:
+   - logo192.png (or android-chrome-192x192.png)
+   - logo512.png (or android-chrome-512x512.png)
+
+STEP 2: Rename Files (If Needed)
+----------------------------------
+If your files are named differently:
+- android-chrome-192x192.png → Rename to: logo192.png
+- android-chrome-512x512.png → Rename to: logo512.png
+
+STEP 3: Copy to Project
+------------------------
+1. Select both icon files (logo192.png and logo512.png)
+2. Right-click → Copy (or Cmd+C)
+3. Navigate to your project in Finder:
+   Go to: Documents → " Old Laptop Documents" → CAO → FINANCIAL REPORT → pos-inventory-system → frontend → public
+4. Right-click in the "public" folder → Paste (or Cmd+V)
+
+STEP 4: Verify
+-------------
+You should now see:
+- frontend/public/logo192.png
+- frontend/public/logo512.png
+
+✓ DONE!
+
+
+================================================================================
+METHOD 2: USING TERMINAL (Command Line)
+================================================================================
+
+STEP 1: Find Your Icon Files
+------------------------------
+First, find where you saved your icons:
+
+# If in Downloads:
+ls ~/Downloads/logo*.png
+
+# If on Desktop:
+ls ~/Desktop/logo*.png
+
+# Search everywhere:
+find ~ -name "logo192.png" 2>/dev/null
+find ~ -name "logo512.png" 2>/dev/null
+
+STEP 2: Copy Files
+-------------------
+Once you find your files, copy them:
+
+# If files are in Downloads:
+cp ~/Downloads/logo192.png "/Users/endiroswendi/Documents/ Old Laptop Documents/CAO/FINANCIAL REPORT/pos-inventory-system/frontend/public/"
+cp ~/Downloads/logo512.png "/Users/endiroswendi/Documents/ Old Laptop Documents/CAO/FINANCIAL REPORT/pos-inventory-system/frontend/public/"
+
+# If files are on Desktop:
+cp ~/Desktop/logo192.png "/Users/endiroswendi/Documents/ Old Laptop Documents/CAO/FINANCIAL REPORT/pos-inventory-system/frontend/public/"
+cp ~/Desktop/logo512.png "/Users/endiroswendi/Documents/ Old Laptop Documents/CAO/FINANCIAL REPORT/pos-inventory-system/frontend/public/"
+
+# If files have different names:
+cp ~/Downloads/android-chrome-192x192.png "/Users/endiroswendi/Documents/ Old Laptop Documents/CAO/FINANCIAL REPORT/pos-inventory-system/frontend/public/logo192.png"
+cp ~/Downloads/android-chrome-512x512.png "/Users/endiroswendi/Documents/ Old Laptop Documents/CAO/FINANCIAL REPORT/pos-inventory-system/frontend/public/logo512.png"
+
+STEP 3: Verify
+--------------
+cd "/Users/endiroswendi/Documents/ Old Laptop Documents/CAO/FINANCIAL REPORT/pos-inventory-system/frontend/public"
+ls -la logo*.png
+
+You should see:
+- logo192.png
+- logo512.png
+
+✓ DONE!
+
+
+================================================================================
+METHOD 3: DRAG AND DROP (Easiest Visual Method)
+================================================================================
+
+STEP 1: Open Two Finder Windows
+--------------------------------
+1. Open Finder window #1:
+   - Navigate to where your TDO icons are saved
+   - (Downloads, Desktop, or wherever you saved them)
+
+2. Open Finder window #2:
+   - Navigate to: Documents → " Old Laptop Documents" → CAO → FINANCIAL REPORT → pos-inventory-system → frontend → public
+
+STEP 2: Drag and Drop
+---------------------
+1. In window #1, select both icon files:
+   - logo192.png
+   - logo512.png
+   (Hold Cmd key to select multiple files)
+
+2. Drag both files to window #2 (the public folder)
+
+3. Drop them in the public folder
+
+STEP 3: Verify
+--------------
+Check that both files are now in the public folder.
+
+✓ DONE!
+
+
+================================================================================
+QUICK COPY-PASTE COMMANDS (If Icons Are in Downloads)
+================================================================================
+
+Just copy and paste these commands one by one:
+
+# Navigate to project
+cd "/Users/endiroswendi/Documents/ Old Laptop Documents/CAO/FINANCIAL REPORT/pos-inventory-system"
+
+# Copy icons from Downloads (adjust path if different)
+cp ~/Downloads/logo192.png frontend/public/
+cp ~/Downloads/logo512.png frontend/public/
+
+# Verify they're there
+ls -la frontend/public/logo*.png
+
+If you see both files listed, you're done!
+
+
+================================================================================
+IF YOUR FILES HAVE DIFFERENT NAMES
+================================================================================
+
+If you downloaded from favicon-generator.org, files might be named:
+- android-chrome-192x192.png
+- android-chrome-512x512.png
+
+Rename them:
+
+# Using Finder:
+1. Right-click file → Rename
+2. Change to: logo192.png or logo512.png
+
+# Using Terminal:
+cd ~/Downloads
+mv android-chrome-192x192.png logo192.png
+mv android-chrome-512x512.png logo512.png
+cp logo192.png "/Users/endiroswendi/Documents/ Old Laptop Documents/CAO/FINANCIAL REPORT/pos-inventory-system/frontend/public/"
+cp logo512.png "/Users/endiroswendi/Documents/ Old Laptop Documents/CAO/FINANCIAL REPORT/pos-inventory-system/frontend/public/"
+
+
+================================================================================
+VERIFICATION CHECKLIST
+================================================================================
+
+After copying, verify:
+
+[ ] logo192.png exists in frontend/public/
+[ ] logo512.png exists in frontend/public/
+[ ] Files are PNG format
+[ ] logo192.png is 192x192 pixels
+[ ] logo512.png is 512x512 pixels
+
+To check in terminal:
+cd "/Users/endiroswendi/Documents/ Old Laptop Documents/CAO/FINANCIAL REPORT/pos-inventory-system/frontend/public"
+ls -la logo*.png
+
+You should see both files!
+
+
+================================================================================
+TEST YOUR ICONS
+================================================================================
+
+After copying, test that they work:
+
+cd "/Users/endiroswendi/Documents/ Old Laptop Documents/CAO/FINANCIAL REPORT/pos-inventory-system/frontend"
+npm run build
+npx serve -s build -p 3000
+
+Open http://localhost:3000
+- Check browser tab - should show your TDO icon!
+- Try "Add to Home Screen" - icon should appear!
+
+
+================================================================================
+TROUBLESHOOTING
+================================================================================
+
+PROBLEM: Can't find my icon files
+----------------------------------
+SOLUTION:
+1. Check Downloads folder
+2. Check Desktop
+3. Search: Open Finder → Cmd+F → Search for "logo192" or "TDO"
+4. Check where you saved them from Canva/favicon generator
+
+PROBLEM: Files won't copy
+--------------------------
+SOLUTION:
+1. Make sure you have both files
+2. Check file names are exactly: logo192.png and logo512.png
+3. Make sure public folder exists
+4. Try drag and drop method instead
+
+PROBLEM: Wrong file names
+--------------------------
+SOLUTION:
+- Rename files to exactly: logo192.png and logo512.png
+- Case sensitive: lowercase "logo", not "Logo"
+- No spaces: "logo192.png" not "logo 192.png"
+
+PROBLEM: Files in wrong location
+---------------------------------
+SOLUTION:
+- Must be in: frontend/public/
+- NOT in: frontend/ (wrong)
+- NOT in: backend/ (wrong)
+- Must be in the "public" folder specifically
+
+
+================================================================================
+QUICK REFERENCE
+================================================================================
+
+Destination folder:
+frontend/public/
+
+Required files:
+- logo192.png (192x192 pixels)
+- logo512.png (512x512 pixels)
+
+Full path:
+/Users/endiroswendi/Documents/ Old Laptop Documents/CAO/FINANCIAL REPORT/pos-inventory-system/frontend/public/
+
+================================================================================
+

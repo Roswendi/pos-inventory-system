@@ -1,0 +1,78 @@
+.navbar {
+  background: white;
+  padding: 15px 30px;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  z-index: 100;
+}
+
+.navbar-brand {
+  display: flex;
+  align-items: center;
+}
+
+.navbar-logo-container {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.navbar-logo {
+  width: 45px;
+  height: 45px;
+  object-fit: contain;
+  border-radius: 4px;
+}
+
+.navbar-title {
+  display: flex;
+  flex-direction: column;
+  line-height: 1.2;
+}
+
+.navbar-title-main {
+  font-size: 24px;
+  font-weight: 700;
+  color: #DC2626;
+  letter-spacing: 1px;
+}
+
+.navbar-title-sub {
+  font-size: 14px;
+  font-weight: 500;
+  color: #6C757D;
+  letter-spacing: 0.5px;
+}
+
+.navbar-actions {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+}
+
+/* Fallback if logo not available */
+.navbar-brand:has(.navbar-logo[style*="display: none"]) .navbar-title-main {
+  font-size: 28px;
+}
+
+@media (max-width: 768px) {
+  .navbar {
+    padding: 12px 15px;
+  }
+  
+  .navbar-logo {
+    width: 35px;
+    height: 35px;
+  }
+  
+  .navbar-title-main {
+    font-size: 20px;
+  }
+  
+  .navbar-title-sub {
+    font-size: 12px;
+  }
+}
+

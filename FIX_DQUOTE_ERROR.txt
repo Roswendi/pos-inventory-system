@@ -1,0 +1,130 @@
+================================================================================
+    HOW TO FIX "DQUOTE" ERROR
+================================================================================
+
+WHAT IS "DQUOTE"?
+-----------------
+"dquote" = "double quote" 
+The terminal is waiting for you to close a quote that you opened.
+
+This happens when:
+- You type an opening quote " but forget the closing quote "
+- You use the wrong type of quote (smart quotes vs straight quotes)
+- You press Enter before closing the quote
+
+================================================================================
+HOW TO FIX IT
+================================================================================
+
+METHOD 1: Close the Quote (If You See "dquote>")
+--------------------------------------------------
+If you see:
+  dquote>
+
+Just type a closing quote:
+  "
+
+Then press Enter.
+
+METHOD 2: Cancel and Start Over
+---------------------------------
+Press: Ctrl + C
+This cancels the current command and starts fresh.
+
+Then type the command again with proper quotes.
+
+METHOD 3: Use the Correct Quote Type
+-------------------------------------
+Use STRAIGHT quotes (not curly/smart quotes):
+
+CORRECT:  "text"  (straight quotes)
+WRONG:    "text"  (curly/smart quotes)
+
+================================================================================
+CORRECT COMMAND FOR YOUR PATH
+================================================================================
+
+Copy and paste this EXACT command:
+
+cd "/Users/endiroswendi/Documents/ Old Laptop Documents/CAO/FINANCIAL REPORT/pos-inventory-system"
+
+IMPORTANT:
+- Use straight quotes " (not curly quotes ")
+- Make sure opening " and closing " are both there
+- Don't press Enter until you've typed the closing quote
+
+================================================================================
+STEP-BY-STEP: Type the Command Correctly
+================================================================================
+
+1. Type: cd "
+   (opening quote - terminal will wait)
+
+2. Type: /Users/endiroswendi/Documents/ Old Laptop Documents/CAO/FINANCIAL REPORT/pos-inventory-system
+
+3. Type: "
+   (closing quote - this closes the quote)
+
+4. Press Enter
+
+================================================================================
+VISUAL EXAMPLE
+================================================================================
+
+CORRECT:
+-------
+$ cd "/Users/endiroswendi/Documents/ Old Laptop Documents/CAO/FINANCIAL REPORT/pos-inventory-system"
+$ (command executes successfully)
+
+WRONG (Missing Closing Quote):
+------------------------------
+$ cd "/Users/endiroswendi/Documents/ Old Laptop Documents
+dquote> (terminal waiting for closing quote)
+
+FIX: Type " then Enter
+dquote> "
+$ (now it works)
+
+================================================================================
+QUICK FIX IF YOU'RE STUCK
+================================================================================
+
+If you see "dquote>" prompt:
+
+Option 1: Close the quote
+  Type: "
+  Press: Enter
+
+Option 2: Cancel
+  Press: Ctrl + C
+  Start over with the correct command
+
+================================================================================
+PREVENTING THE ERROR
+================================================================================
+
+1. Always type BOTH quotes:
+   Opening: "
+   Closing: "
+
+2. Use straight quotes from keyboard:
+   Shift + ' (apostrophe key) = "
+   
+3. Don't copy-paste from Word/rich text (may have smart quotes)
+   Copy from plain text or type manually
+
+4. Use Tab completion:
+   Type: cd "/Users/endiroswendi/Documents/ Old
+   Press: TAB
+   Terminal completes it with proper quotes
+
+================================================================================
+COPY-PASTE READY (No Typing Needed)
+================================================================================
+
+Just copy this entire line and paste in terminal:
+
+cd "/Users/endiroswendi/Documents/ Old Laptop Documents/CAO/FINANCIAL REPORT/pos-inventory-system"
+
+================================================================================
+

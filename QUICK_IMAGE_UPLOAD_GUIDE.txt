@@ -1,0 +1,200 @@
+================================================================================
+    QUICK GUIDE: ADD PRODUCT IMAGES
+    Copy-Paste, Drag-Drop, or URL - All Work!
+================================================================================
+
+✅ YOU CAN NOW USE 3 METHODS:
+1. Copy-Paste (Easiest!)
+2. Drag & Drop
+3. URL
+
+================================================================================
+METHOD 1: COPY-PASTE (FASTEST - 3 Steps!)
+================================================================================
+
+STEP 1: Copy Image
+-------------------
+- Find your product image (anywhere - web, computer, phone, etc.)
+- Right-click → Copy
+- OR: Select image → Cmd+C (Mac) / Ctrl+C (Windows)
+
+STEP 2: Paste in Upload Area
+-----------------------------
+- Go to Products → Add Product
+- Scroll to "Product Image"
+- Select "Upload File" option
+- Click in the upload area (box with 📷 icon)
+- Paste: Cmd+V (Mac) or Ctrl+V (Windows)
+
+STEP 3: Done!
+-------------
+- Image uploads automatically
+- Preview appears
+- Click "Save"
+
+That's it! No need to save file first!
+
+================================================================================
+METHOD 2: DRAG & DROP (Also Easy!)
+================================================================================
+
+STEP 1: Find Image File
+------------------------
+- Locate your product image file on computer
+
+STEP 2: Drag & Drop
+-------------------
+- Drag the image file
+- Drop it into upload area (box with 📷 icon)
+- Image uploads automatically!
+
+STEP 3: Save
+------------
+- Preview appears
+- Click "Save"
+
+================================================================================
+METHOD 3: BROWSE FILES
+================================================================================
+
+STEP 1: Click "Browse Files"
+-----------------------------
+- In upload area, click "Browse Files" button
+
+STEP 2: Select Image
+--------------------
+- Choose image from your computer
+- Click "Open"
+
+STEP 3: Save
+------------
+- Preview appears
+- Click "Save"
+
+================================================================================
+METHOD 4: USE URL (If Image Already Online)
+================================================================================
+
+STEP 1: Select "Use URL"
+------------------------
+- Click radio button: "Use URL"
+
+STEP 2: Paste URL
+-----------------
+- Copy image URL from web
+- Paste in URL field
+- Preview appears
+
+STEP 3: Save
+------------
+- Click "Save"
+
+================================================================================
+WHICH METHOD IS BEST?
+================================================================================
+
+✅ COPY-PASTE: Fastest! Works from anywhere
+✅ DRAG-DROP: Easy if file is on computer
+✅ BROWSE: Traditional file selection
+✅ URL: If image already online
+
+RECOMMENDED: Copy-Paste!
+- Works from web, computer, anywhere
+- No need to save file first
+- Fastest method
+
+================================================================================
+STEP-BY-STEP: Copy-Paste Example
+================================================================================
+
+Example: Adding product image from Google Images
+
+1. Go to Google Images
+2. Find product image
+3. Right-click image → "Copy image"
+4. Go to your POS system
+5. Products → Add Product
+6. Scroll to "Product Image"
+7. Select "Upload File"
+8. Click in upload area
+9. Paste: Cmd+V (Mac) or Ctrl+V (Windows)
+10. Wait 2 seconds
+11. See preview - done!
+12. Click "Save"
+
+Total time: 30 seconds!
+
+================================================================================
+TROUBLESHOOTING
+================================================================================
+
+PROBLEM: Paste doesn't work
+----------------------------
+SOLUTION:
+- Make sure you click IN the upload area first
+- Try drag & drop instead
+- Or use Browse Files button
+
+PROBLEM: Image doesn't upload
+------------------------------
+SOLUTION:
+- Check file size (must be under 5MB)
+- Check backend is running (port 5001)
+- Try different image
+- Check browser console (F12)
+
+PROBLEM: Preview doesn't show
+------------------------------
+SOLUTION:
+- Wait a few seconds
+- Check if upload completed
+- Try refreshing form
+
+================================================================================
+QUICK TIPS
+================================================================================
+
+💡 TIP 1: Copy from anywhere!
+- Web pages
+- Your computer
+- Phone screenshots
+- Other apps
+- Just copy and paste!
+
+💡 TIP 2: Drag multiple images
+- Drag one, upload
+- Drag another, upload
+- Each product gets its own image
+
+💡 TIP 3: Keep images small
+- Resize large images first
+- Faster upload
+- Better performance
+
+================================================================================
+SUMMARY
+================================================================================
+
+EASIEST: Copy-Paste
+1. Copy image (anywhere)
+2. Click upload area
+3. Paste
+4. Done!
+
+ALTERNATIVE: Drag-Drop
+1. Drag image file
+2. Drop in upload area
+3. Done!
+
+ALTERNATIVE: Browse
+1. Click "Browse Files"
+2. Select image
+3. Done!
+
+ALTERNATIVE: URL
+1. Select "Use URL"
+2. Paste URL
+3. Done!
+
+================================================================================
+

@@ -1,0 +1,133 @@
+================================================================================
+    HOW TO ADD TDO LOGO TO TOP LEFT CORNER
+    Step-by-Step Instructions
+================================================================================
+
+✅ WHAT HAS BEEN DONE
+================================================================================
+
+I've updated the Navbar component to display:
+- TDO logo image (from /logo512.png)
+- "TDO" text in red (matching your logo)
+- "POS System" subtitle
+- All in the top left corner
+
+================================================================================
+STEP 1: ADD YOUR LOGO FILE
+================================================================================
+
+Your TDO logo needs to be in the public folder:
+
+1. Copy your TDO logo image
+2. Place it in: frontend/public/logo512.png
+   (Or use the existing logo512.png if you already created it)
+
+The logo will automatically appear in the navbar!
+
+================================================================================
+STEP 2: VERIFY LOGO APPEARS
+================================================================================
+
+1. Make sure logo512.png is in frontend/public/
+2. Rebuild the app:
+   cd frontend
+   npm run build
+
+3. Restart server:
+   npx serve -s build -p 3000
+
+4. Open browser: http://localhost:3000
+5. Check top left corner - should show:
+   - TDO logo image
+   - "TDO" in red
+   - "POS System" subtitle
+
+================================================================================
+CUSTOMIZATION OPTIONS
+================================================================================
+
+If you want to adjust the logo or text:
+
+FILE: frontend/src/components/Navbar.css
+
+CHANGE LOGO SIZE:
+  .navbar-logo {
+    width: 45px;  /* Change this */
+    height: 45px; /* Change this */
+  }
+
+CHANGE "TDO" TEXT COLOR:
+  .navbar-title-main {
+    color: #DC2626; /* Change to your preferred red */
+  }
+
+CHANGE "POS System" COLOR:
+  .navbar-title-sub {
+    color: #6C757D; /* Change to your preferred color */
+  }
+
+CHANGE TEXT SIZES:
+  .navbar-title-main {
+    font-size: 24px; /* Change this */
+  }
+  
+  .navbar-title-sub {
+    font-size: 14px; /* Change this */
+  }
+
+================================================================================
+IF LOGO DOESN'T APPEAR
+================================================================================
+
+PROBLEM: Logo not showing
+--------------------------
+SOLUTION:
+1. Check logo512.png exists in frontend/public/
+2. Rebuild: npm run build
+3. Clear browser cache
+4. Hard refresh: Cmd+Shift+R (Mac) or Ctrl+Shift+R (Windows)
+
+PROBLEM: Logo too big/small
+----------------------------
+SOLUTION:
+- Edit frontend/src/components/Navbar.css
+- Change .navbar-logo width and height values
+
+PROBLEM: Text color wrong
+--------------------------
+SOLUTION:
+- Edit frontend/src/components/Navbar.css
+- Change .navbar-title-main color value
+- Use hex color code (e.g., #DC2626 for red)
+
+================================================================================
+CURRENT DESIGN
+================================================================================
+
+Top Left Corner Shows:
+┌─────────────────┐
+│ [TDO Logo] TDO  │
+│          POS    │
+│          System │
+└─────────────────┘
+
+- Logo: 45x45 pixels
+- "TDO": Red (#DC2626), 24px, bold
+- "POS System": Gray (#6C757D), 14px
+
+================================================================================
+QUICK FIX IF LOGO MISSING
+================================================================================
+
+If logo512.png doesn't exist:
+
+1. Use your TDO logo image
+2. Resize to 512x512 pixels (or any size, CSS will scale it)
+3. Save as: frontend/public/logo512.png
+4. Rebuild: npm run build
+5. Refresh browser
+
+The navbar will automatically use it!
+
+================================================================================
+

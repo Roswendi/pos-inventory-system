@@ -1,0 +1,52 @@
+================================================================================
+    VERY SIMPLE WAY TO CREATE DESKTOP ICON
+================================================================================
+
+✅ EASIEST METHOD - 3 STEPS:
+================================================================================
+
+STEP 1: Open Automator
+-----------------------
+Press: Cmd + Space
+Type: Automator
+Press: Enter
+
+STEP 2: Create Application
+---------------------------
+1. Choose "Application"
+2. Click "Choose"
+3. Search for "Run Shell Script" (left sidebar)
+4. Drag it to workflow area
+5. Paste this in the script box:
+
+  cd "/Users/endiroswendi/Documents/ Old Laptop Documents/CAO/FINANCIAL REPORT/pos-inventory-system/backend"
+  if ! lsof -ti:5001 > /dev/null 2>&1; then
+      osascript -e 'tell app "Terminal" to do script "cd '"'"'/Users/endiroswendi/Documents/ Old Laptop Documents/CAO/FINANCIAL REPORT/pos-inventory-system/backend'"'"' && node server.js"'
+      sleep 5
+  fi
+  open "http://localhost:5001"
+
+STEP 3: Save
+------------
+1. Press: Cmd + S
+2. Name: "TDO POS System"
+3. Where: Desktop
+4. Click: "Save"
+
+DONE! Icon appears on desktop!
+
+Double-click it to launch! 🚀
+
+================================================================================
+
+IF YOU DON'T SEE IT:
+====================
+
+1. Press: Cmd + Option + Esc
+2. Select: Finder
+3. Click: "Relaunch"
+
+Icon should appear now!
+
+================================================================================
+

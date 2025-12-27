@@ -1,0 +1,135 @@
+================================================================================
+    FIX: HOSTINGER "UNSUPPORTED FRAMEWORK" ERROR
+================================================================================
+
+✅ PROBLEM IDENTIFIED
+================================================================================
+
+THE ISSUE:
+==========
+Hostinger's automated deployment expects:
+- package.json in the ROOT directory
+- Specific folder structure
+- Files extracted, not as tar.gz
+
+THE SOLUTION:
+=============
+We need to create a Hostinger-compatible structure OR upload files manually.
+
+================================================================================
+
+SOLUTION 1: MANUAL FILE UPLOAD (RECOMMENDED)
+============================================
+
+Hostinger doesn't process tar.gz files automatically. You need to:
+
+STEP 1: Extract the Archive Locally
+-----------------------------------
+On your computer:
+1. Double-click pos-system-deploy.tar.gz
+2. OR extract with: tar -xzf pos-system-deploy.tar.gz
+3. This creates a folder with: backend/, frontend-build/, etc.
+
+STEP 2: Upload Files via FTP or File Manager
+--------------------------------------------
+Upload the EXTRACTED files (not the tar.gz):
+
+METHOD A: Via File Manager (hPanel)
+1. Log into Hostinger hPanel
+2. Go to File Manager
+3. Navigate to your domain folder (public_html or www)
+4. Upload the EXTRACTED folders:
+   - backend/
+   - frontend-build/
+   - DEPLOY_INSTRUCTIONS.txt
+
+METHOD B: Via FTP
+1. Use FileZilla
+2. Connect to Hostinger FTP
+3. Upload the EXTRACTED folders directly
+4. Don't upload the tar.gz file
+
+================================================================================
+
+SOLUTION 2: HOSTINGER NODE.JS APP STRUCTURE
+============================================
+
+If using Hostinger's Node.js App feature:
+
+STEP 1: Create Correct Structure
+---------------------------------
+Hostinger expects:
+- package.json in ROOT
+- server.js in ROOT (or specified path)
+- All files in one folder
+
+STEP 2: Create Hostinger-Compatible Package
+--------------------------------------------
+Run the new script I'll create: HOSTINGER_DEPLOY.sh
+
+This creates a structure Hostinger can recognize.
+
+================================================================================
+
+SOLUTION 3: UPLOAD VIA FTP (BEST METHOD)
+=========================================
+
+STEP 1: Extract Archive on Your Computer
+-----------------------------------------
+1. Extract pos-system-deploy.tar.gz
+2. You'll get folders: backend/, frontend-build/
+
+STEP 2: Connect via FTP
+-----------------------
+1. Get FTP credentials from Hostinger hPanel
+2. Use FileZilla (free FTP client)
+3. Connect to your server
+
+STEP 3: Upload Folders
+----------------------
+1. Navigate to your domain folder on server
+2. Upload backend/ folder
+3. Upload frontend-build/ folder (rename to build/)
+4. Upload all files
+
+STEP 4: Configure on Server
+---------------------------
+1. SSH to server (if VPS) or use Terminal in hPanel
+2. Navigate to uploaded folder
+3. Install dependencies: cd backend && npm install
+4. Start application
+
+================================================================================
+
+WHY THE ERROR OCCURS:
+=====================
+
+Hostinger's automated deployment:
+- Expects package.json in root
+- Expects specific structure
+- Doesn't process tar.gz archives
+- Needs files already extracted
+
+Our package structure:
+- Has backend/ and frontend-build/ as separate folders
+- package.json is in backend/
+- This doesn't match Hostinger's expected structure
+
+================================================================================
+
+QUICK FIX - DO THIS NOW:
+========================
+
+OPTION A: Extract and Upload Manually
+--------------------------------------
+1. Extract pos-system-deploy.tar.gz on your computer
+2. Upload the extracted folders via FTP or File Manager
+3. Don't use Hostinger's automated deployment
+
+OPTION B: Use New Hostinger Script
+-----------------------------------
+I'll create a script that makes Hostinger-compatible structure.
+Run it and upload the new package.
+
+================================================================================
+

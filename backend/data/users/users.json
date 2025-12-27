@@ -1,0 +1,29 @@
+[
+  {
+    "id": "3181b76e-ad4e-4e8a-a410-5b8f6c96acea",
+    "username": "admin",
+    "email": "admin@example.com",
+    "password": "$2a$10$tWPP73fdlWn2qyaibMChqeOR7uDvMzvHYfVn0Cg7uTGOjuoosPpbi",
+    "role": "admin",
+    "name": "Administrator",
+    "createdAt": "2025-12-20T21:19:34.313Z"
+  },
+  {
+    "id": "d0741e68-e3dd-4d49-8807-3ec8ba69ca4e",
+    "username": "manager",
+    "email": "manager@example.com",
+    "password": "$2a$10$yNFiZt958PI0M72LTv9tQuWBmFbU9Z6fGFDKtJlrdAspJGduFuxOe",
+    "role": "manager",
+    "name": "Manager",
+    "createdAt": "2025-12-27T01:59:42.539Z"
+  },
+  {
+    "id": "65188392-03f1-4be4-b9b7-8c798f165ac2",
+    "username": "cashier",
+    "email": "cashier@example.com",
+    "password": "$2a$10$yNFiZt958PI0M72LTv9tQuWBmFbU9Z6fGFDKtJlrdAspJGduFuxOe",
+    "role": "cashier",
+    "name": "Cashier",
+    "createdAt": "2025-12-27T01:59:42.539Z"
+  }
+]

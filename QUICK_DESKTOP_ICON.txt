@@ -1,0 +1,98 @@
+================================================================================
+    QUICKEST WAY TO CREATE DESKTOP ICON - MAC
+================================================================================
+
+✅ EASIEST METHOD (5 Minutes):
+================================================================================
+
+STEP 1: Open Automator
+-----------------------
+1. Press Cmd+Space (Spotlight)
+2. Type: Automator
+3. Press Enter
+
+STEP 2: Create Application
+--------------------------
+1. Choose "Application"
+2. Click "Choose"
+
+STEP 3: Add Shell Script
+------------------------
+1. In left sidebar, search: "Run Shell Script"
+2. Drag it to workflow area
+
+STEP 4: Paste This Script
+---------------------------
+In the script box, paste:
+
+  cd "/Users/endiroswendi/Documents/ Old Laptop Documents/CAO/FINANCIAL REPORT/pos-inventory-system/backend"
+  
+  # Start server if not running
+  if ! lsof -ti:5001 > /dev/null 2>&1; then
+      osascript -e 'tell app "Terminal" to do script "cd '"'"'/Users/endiroswendi/Documents/ Old Laptop Documents/CAO/FINANCIAL REPORT/pos-inventory-system/backend'"'"' && node server.js"'
+      sleep 5
+  fi
+  
+  # Open browser
+  open "http://localhost:5001"
+
+STEP 5: Save
+------------
+1. File → Save (or Cmd+S)
+2. Name: "TDO POS System"
+3. Where: Desktop
+4. File Format: Application
+5. Click "Save"
+
+STEP 6: Add Icon (Optional)
+----------------------------
+1. Find an image/icon you want to use
+2. Right-click "TDO POS System" on desktop
+3. Select "Get Info"
+4. Click the small icon in top-left corner
+5. Press Cmd+C to copy your image
+6. Click the icon again
+7. Press Cmd+V to paste
+
+Done! 🎉
+
+Now double-click "TDO POS System" on your desktop to launch!
+
+================================================================================
+
+IF ICON DOESN'T APPEAR:
+=======================
+
+1. Refresh Desktop:
+   - Press Cmd+Option+Esc
+   - Select Finder
+   - Click "Relaunch"
+
+2. Or restart Finder:
+   - Press Cmd+Option+Esc
+   - Select Finder
+   - Click "Force Quit"
+   - Finder will restart automatically
+
+3. Check Desktop folder:
+   - Open Finder
+   - Go to Desktop
+   - Look for "TDO POS System.app"
+
+================================================================================
+
+ALTERNATIVE: Browser Bookmark Method
+====================================
+
+If Automator is too complex:
+
+1. Start server: cd backend && node server.js
+2. Open: http://localhost:5001
+3. Press Cmd+D to bookmark
+4. Name: "TDO POS System"
+5. Drag bookmark to Dock
+
+Click bookmark in Dock to launch!
+
+================================================================================
+

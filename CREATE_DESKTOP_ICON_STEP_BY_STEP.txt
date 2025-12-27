@@ -1,0 +1,141 @@
+================================================================================
+    CREATE DESKTOP ICON - STEP BY STEP (MAC)
+    Easiest Method Using Automator
+================================================================================
+
+✅ METHOD: Use Automator (Built into Mac - No Installation Needed)
+================================================================================
+
+STEP 1: Open Automator
+-----------------------
+1. Press: Cmd + Space (opens Spotlight)
+2. Type: "Automator"
+3. Press: Enter
+
+STEP 2: Choose Application Type
+-------------------------------
+1. You'll see "Choose a type for your document"
+2. Select: "Application"
+3. Click: "Choose" button
+
+STEP 3: Add Shell Script Action
+--------------------------------
+1. In the left sidebar, look for "Library"
+2. Search for: "Run Shell Script"
+   (Type "shell" in search box)
+3. Drag "Run Shell Script" to the workflow area (right side)
+
+STEP 4: Paste This Script
+--------------------------
+In the script box (where it says "cat"), DELETE everything and paste this:
+
+  cd "/Users/endiroswendi/Documents/ Old Laptop Documents/CAO/FINANCIAL REPORT/pos-inventory-system/backend"
+  
+  if ! lsof -ti:5001 > /dev/null 2>&1; then
+      osascript -e 'tell app "Terminal" to do script "cd '"'"'/Users/endiroswendi/Documents/ Old Laptop Documents/CAO/FINANCIAL REPORT/pos-inventory-system/backend'"'"' && node server.js"'
+      sleep 5
+  fi
+  
+  open "http://localhost:5001"
+
+STEP 5: Save Application
+-------------------------
+1. Press: Cmd + S (or File → Save)
+2. Name: "TDO POS System"
+3. Where: Desktop
+4. File Format: Application (should be selected)
+5. Click: "Save"
+
+STEP 6: Check Desktop
+---------------------
+Look on your desktop - you should see:
+  "TDO POS System.app"
+
+If you don't see it:
+  - Press: Cmd + Option + Esc
+  - Select: Finder
+  - Click: "Relaunch"
+
+STEP 7: Add Custom Icon (Optional)
+-----------------------------------
+1. Find an image/icon you want to use (any image file)
+2. Right-click "TDO POS System" on desktop
+3. Select: "Get Info"
+4. Click the small icon in the top-left corner (it will highlight)
+5. Press: Cmd + C (to copy your image)
+6. Click the icon again
+7. Press: Cmd + V (to paste)
+
+Done! Now you have a desktop icon! 🎉
+
+STEP 8: Test It
+---------------
+1. Double-click "TDO POS System" on desktop
+2. It should:
+   - Open Terminal (if server not running)
+   - Start the server
+   - Open browser to http://localhost:5001
+
+================================================================================
+
+IF ICON STILL DOESN'T APPEAR:
+=============================
+
+METHOD A: Refresh Desktop
+--------------------------
+1. Press: Cmd + Option + Esc
+2. Select: Finder
+3. Click: "Relaunch"
+
+METHOD B: Check Desktop Folder
+-------------------------------
+1. Open Finder
+2. Click "Desktop" in sidebar
+3. Look for "TDO POS System.app"
+4. If it's there, drag it to desktop if needed
+
+METHOD C: Create Alias
+----------------------
+1. Find the app in Applications or where you saved it
+2. Right-click → "Make Alias"
+3. Drag alias to desktop
+
+================================================================================
+
+ALTERNATIVE: Browser Bookmark Method (Even Easier)
+==================================================
+
+If Automator is too complex:
+
+STEP 1: Start Server
+-------------------
+  cd backend
+  node server.js
+
+STEP 2: Open Browser
+-------------------
+  http://localhost:5001
+
+STEP 3: Add to Dock
+-------------------
+1. Press: Cmd + D (bookmark)
+2. Name: "TDO POS"
+3. Drag bookmark from bookmarks bar to Dock
+4. Now click it in Dock to launch!
+
+================================================================================
+
+QUICKEST METHOD SUMMARY:
+========================
+
+1. Open Automator
+2. New → Application
+3. Add "Run Shell Script"
+4. Paste script (from Step 4 above)
+5. Save to Desktop as "TDO POS System"
+6. Done!
+
+Double-click to launch! 🚀
+
+================================================================================
+

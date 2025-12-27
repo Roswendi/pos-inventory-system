@@ -1,0 +1,66 @@
+.tabs {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 20px;
+  border-bottom: 2px solid #DEE2E6;
+}
+
+.tab {
+  padding: 10px 20px;
+  border: none;
+  background: transparent;
+  cursor: pointer;
+  font-size: 14px;
+  font-weight: 500;
+  color: #6C757D;
+  border-bottom: 2px solid transparent;
+  margin-bottom: -2px;
+}
+
+.tab:hover {
+  color: #0066FF;
+}
+
+.tab.active {
+  color: #0066FF;
+  border-bottom-color: #0066FF;
+}
+
+.financial-statement {
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+}
+
+.statement-section {
+  border-bottom: 1px solid #DEE2E6;
+  padding-bottom: 20px;
+}
+
+.statement-section h3 {
+  margin-bottom: 15px;
+  color: #212529;
+}
+
+.statement-item {
+  display: flex;
+  justify-content: space-between;
+  padding: 8px 0;
+  color: #6C757D;
+}
+
+.statement-total {
+  display: flex;
+  justify-content: space-between;
+  padding: 15px 0;
+  font-weight: 600;
+  font-size: 16px;
+  border-top: 2px solid #DEE2E6;
+  margin-top: 10px;
+}
+
+.net-income {
+  font-size: 20px;
+  font-weight: 700;
+}
+

@@ -1,0 +1,46 @@
+================================================================================
+    SIMPLE WAY TO START SERVER
+================================================================================
+
+✅ SERVER.JS EXISTS at: backend/server.js
+
+================================================================================
+EASIEST METHOD - ONE COMMAND:
+================================================================================
+
+Open Terminal and run:
+
+  cd "/Users/endiroswendi/Documents/ Old Laptop Documents/CAO/FINANCIAL REPORT/pos-inventory-system/backend" && node server.js
+
+That's it! Server will start.
+
+================================================================================
+IF PORT IS IN USE:
+================================================================================
+
+Kill the process first:
+
+  lsof -ti:5001 | xargs kill
+
+Then start server:
+
+  cd backend && node server.js
+
+================================================================================
+VERIFY IT'S WORKING:
+================================================================================
+
+Open browser and go to:
+  http://localhost:5001/api/health
+
+Should show:
+  {"status":"OK","message":"POS Inventory System API is running"}
+
+================================================================================
+TO STOP SERVER:
+================================================================================
+
+Press Ctrl+C in the terminal where server is running
+
+================================================================================
+

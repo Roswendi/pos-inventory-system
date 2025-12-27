@@ -1,0 +1,128 @@
+================================================================================
+    HOW TO RUN DEPLOYMENT SCRIPT - STEP BY STEP
+================================================================================
+
+✅ CORRECT WAY TO RUN THE SCRIPT
+================================================================================
+
+STEP 1: Open Terminal
+---------------------
+Press: Cmd + Space
+Type: Terminal
+Press: Enter
+
+STEP 2: Navigate to Project Folder
+-----------------------------------
+Copy and paste this EXACT command:
+
+  cd "/Users/endiroswendi/Documents/ Old Laptop Documents/CAO/FINANCIAL REPORT/pos-inventory-system"
+
+IMPORTANT: 
+- Use quotes around the path (because of spaces)
+- Copy the ENTIRE path exactly
+
+STEP 3: Verify You're in Right Place
+--------------------------------------
+Run:
+
+  ls -la deploy.sh
+
+You should see the file listed.
+
+STEP 4: Run the Script
+-----------------------
+Run ONE of these commands:
+
+  bash deploy.sh
+
+OR:
+
+  ./deploy.sh
+
+================================================================================
+
+IF YOU GET "NO SUCH FILE OR DIRECTORY":
+========================================
+
+PROBLEM 1: Wrong Directory
+---------------------------
+Solution:
+1. Check where you are: pwd
+2. Should show: .../pos-inventory-system
+3. If not, run the cd command from Step 2 again
+
+PROBLEM 2: Script Not Found
+---------------------------
+Solution:
+1. List files: ls -la
+2. Look for deploy.sh
+3. If not there, you're in wrong directory
+
+PROBLEM 3: Permission Denied
+----------------------------
+Solution:
+  chmod +x deploy.sh
+  ./deploy.sh
+
+================================================================================
+
+ALTERNATIVE: Manual Steps (If Script Fails)
+===========================================
+
+If the script doesn't work, do it manually:
+
+STEP 1: Build Frontend
+----------------------
+  cd frontend
+  npm run build
+  cd ..
+
+STEP 2: Create Deployment Folder
+--------------------------------
+  mkdir deploy-package
+
+STEP 3: Copy Backend
+--------------------
+  cp -r backend deploy-package/
+  rm -rf deploy-package/backend/node_modules
+
+STEP 4: Copy Frontend Build
+---------------------------
+  cp -r frontend/build deploy-package/frontend-build
+
+STEP 5: Create Archive
+-----------------------
+  cd deploy-package
+  tar -czf ../pos-system-deploy.tar.gz .
+  cd ..
+
+Done! You now have: pos-system-deploy.tar.gz
+
+================================================================================
+
+QUICK COPY-PASTE COMMANDS:
+==========================
+
+# Navigate to project (copy entire line)
+cd "/Users/endiroswendi/Documents/ Old Laptop Documents/CAO/FINANCIAL REPORT/pos-inventory-system"
+
+# Check if script exists
+ls deploy.sh
+
+# Run the script
+bash deploy.sh
+
+================================================================================
+
+WHAT THE SCRIPT DOES:
+====================
+
+1. ✓ Builds frontend (npm run build)
+2. ✓ Installs backend dependencies
+3. ✓ Creates deployment package
+4. ✓ Creates pos-system-deploy.tar.gz file
+
+The final file: pos-system-deploy.tar.gz is ready to upload to Hostinger!
+
+================================================================================
+

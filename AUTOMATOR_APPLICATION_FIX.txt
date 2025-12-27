@@ -1,0 +1,175 @@
+================================================================================
+    FIX: CAN'T FIND "APPLICATION" IN AUTOMATOR
+================================================================================
+
+✅ SOLUTION: Create New Document
+================================================================================
+
+IF YOU DON'T SEE "APPLICATION" OPTION:
+======================================
+
+STEP 1: Close Current Window
+----------------------------
+1. If Automator is open, close it (Cmd+Q)
+2. Or: File → Close (Cmd+W)
+
+STEP 2: Open Automator Fresh
+-----------------------------
+1. Press: Cmd + Space
+2. Type: Automator
+3. Press: Enter
+
+STEP 3: Look for "Choose a type" Dialog
+---------------------------------------
+When Automator opens, you should see a dialog that says:
+  "Choose a type for your document"
+
+If you DON'T see this dialog:
+  - Go to: File → New (Cmd+N)
+  - The dialog should appear
+
+STEP 4: Select Application
+---------------------------
+In the dialog, you'll see these options:
+  ☐ Workflow
+  ☐ Application  ← SELECT THIS ONE
+  ☐ Service
+  ☐ Quick Action
+  ☐ Print Plugin
+  ☐ Folder Action
+  etc.
+
+Click on "Application" and then click "Choose"
+
+================================================================================
+
+ALTERNATIVE: If Still Can't Find It
+=====================================
+
+METHOD 1: Use File Menu
+------------------------
+1. Open Automator
+2. Click: File → New (or press Cmd+N)
+3. Select: "Application"
+4. Click: "Choose"
+
+METHOD 2: Use Template Gallery
+-------------------------------
+1. Open Automator
+2. If you see a template gallery, look for "Application"
+3. Click on it
+
+METHOD 3: Different Approach - Create Script File
+--------------------------------------------------
+If Automator is too complicated, use this simpler method:
+
+STEP 1: Create Script File
+---------------------------
+1. Open TextEdit
+2. Paste this:
+
+  #!/bin/bash
+  cd "/Users/endiroswendi/Documents/ Old Laptop Documents/CAO/FINANCIAL REPORT/pos-inventory-system/backend"
+  if ! lsof -ti:5001 > /dev/null 2>&1; then
+      osascript -e 'tell app "Terminal" to do script "cd '"'"'/Users/endiroswendi/Documents/ Old Laptop Documents/CAO/FINANCIAL REPORT/pos-inventory-system/backend'"'"' && node server.js"'
+      sleep 5
+  fi
+  open "http://localhost:5001"
+
+3. Save as: "Start TDO POS.command" on Desktop
+   (Important: Save as .command, not .txt)
+
+STEP 2: Make Executable
+-----------------------
+1. Open Terminal
+2. Run:
+   chmod +x ~/Desktop/"Start TDO POS.command"
+
+STEP 3: Create Alias
+--------------------
+1. Right-click "Start TDO POS.command" on desktop
+2. Select: "Make Alias"
+3. Rename alias to: "TDO POS System"
+4. Done!
+
+Double-click to launch!
+
+================================================================================
+
+METHOD 4: Use Script Editor (Even Easier)
+==========================================
+
+STEP 1: Open Script Editor
+---------------------------
+1. Press: Cmd + Space
+2. Type: "Script Editor"
+3. Press: Enter
+
+STEP 2: Paste This Script
+---------------------------
+Paste this code:
+
+  tell application "Terminal"
+      activate
+      do script "cd '/Users/endiroswendi/Documents/ Old Laptop Documents/CAO/FINANCIAL REPORT/pos-inventory-system/backend' && if ! lsof -ti:5001 > /dev/null 2>&1; then node server.js & fi && sleep 3 && open 'http://localhost:5001'"
+  end tell
+
+STEP 3: Save as Application
+---------------------------
+1. File → Save (Cmd+S)
+2. Name: "TDO POS System"
+3. File Format: Application
+4. Where: Desktop
+5. Click: "Save"
+
+Done! Icon on desktop!
+
+================================================================================
+
+QUICKEST ALTERNATIVE: Browser Bookmark
+=======================================
+
+If all else fails, use browser bookmark:
+
+STEP 1: Start Server
+--------------------
+  cd backend
+  node server.js
+
+STEP 2: Open Browser
+-------------------
+  http://localhost:5001
+
+STEP 3: Add to Dock
+-------------------
+1. Press: Cmd + D (bookmark)
+2. Name: "TDO POS System"
+3. Drag bookmark to Dock
+4. Click in Dock to launch!
+
+================================================================================
+
+SUMMARY - EASIEST METHODS:
+===========================
+
+1. Script Editor (Easiest):
+   - Open Script Editor
+   - Paste AppleScript
+   - Save as Application
+   - Done!
+
+2. TextEdit + Terminal:
+   - Create .command file
+   - Make executable
+   - Create alias
+   - Done!
+
+3. Browser Bookmark:
+   - Bookmark the URL
+   - Add to Dock
+   - Done!
+
+Try Script Editor method - it's the easiest! 🚀
+
+================================================================================
+

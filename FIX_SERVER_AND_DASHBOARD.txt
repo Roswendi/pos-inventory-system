@@ -1,0 +1,143 @@
+================================================================================
+    FIX: SERVER NOT RUNNING & DASHBOARD "NO DATA" ERROR
+================================================================================
+
+✅ PROBLEMS IDENTIFIED:
+======================
+
+1. ❌ Server not running → localhost:5001 cannot be reached
+2. ❌ Dashboard shows "no data" → API connection failed
+
+================================================================================
+
+SOLUTION 1: START THE SERVER
+============================
+
+OPTION A: Use Desktop Icon (Easiest)
+------------------------------------
+1. Double-click "Start_TDO_POS.command" on Desktop
+2. Wait for Terminal window to open
+3. Wait 5-10 seconds
+4. Browser should open automatically
+
+OPTION B: Manual Start
+----------------------
+Open Terminal and run:
+
+  cd "/Users/endiroswendi/Documents/ Old Laptop Documents/CAO/FINANCIAL REPORT/pos-inventory-system/backend"
+  node server.js
+
+You should see:
+  🚀 Server running on http://localhost:5001
+  ✓ Frontend build found, serving static files
+
+Keep this Terminal window open!
+
+================================================================================
+
+SOLUTION 2: VERIFY SERVER IS RUNNING
+====================================
+
+Check if server is running:
+
+  lsof -ti:5001
+
+If it shows a number, server is running ✓
+If empty, server is not running ✗
+
+================================================================================
+
+SOLUTION 3: TEST THE API
+=========================
+
+Open browser and go to:
+  http://localhost:5001/api/dashboard/summary
+
+You should see JSON data (not "Cannot GET /")
+
+If you see JSON, API is working! ✓
+
+================================================================================
+
+SOLUTION 4: FIX DASHBOARD "NO DATA"
+===================================
+
+The dashboard needs:
+1. Server running ✓ (start it first)
+2. Data files exist ✓ (they do)
+3. API connection working ✓ (test above)
+
+After starting server:
+1. Refresh browser (Cmd + R)
+2. Dashboard should load data
+
+If still shows "no data":
+- Check browser console (F12 → Console tab)
+- Look for error messages
+- Make sure you're logged in
+
+================================================================================
+
+QUICK FIX - ALL IN ONE:
+=======================
+
+STEP 1: Start Server
+---------------------
+  cd "/Users/endiroswendi/Documents/ Old Laptop Documents/CAO/FINANCIAL REPORT/pos-inventory-system/backend"
+  node server.js
+
+STEP 2: Open Browser
+-------------------
+  http://localhost:5001
+
+STEP 3: Login
+------------
+  Username: admin
+  Password: admin123
+
+STEP 4: Check Dashboard
+------------------------
+  Click "Dashboard" in sidebar
+  Should show data now!
+
+================================================================================
+
+TROUBLESHOOTING:
+================
+
+IF "Cannot GET /" ERROR:
+------------------------
+→ Server is not running
+→ Start server (see Solution 1)
+
+IF DASHBOARD SHOWS "NO DATA":
+-----------------------------
+→ Server might not be running
+→ API might be failing
+→ Check browser console for errors
+
+IF PORT 5001 ALREADY IN USE:
+--------------------------
+  lsof -ti:5001 | xargs kill
+  Then start server again
+
+IF BROWSER CAN'T CONNECT:
+-------------------------
+1. Check server is running (lsof -ti:5001)
+2. Check firewall settings
+3. Try: http://127.0.0.1:5001 instead
+
+================================================================================
+
+IMPORTANT NOTES:
+================
+
+✅ Server must be running for app to work
+✅ Keep Terminal window open while using app
+✅ Use desktop icon to start server easily
+✅ Dashboard will show "no data" if server is down
+
+I've updated the dashboard code to handle errors better and show default data if API fails.
+
+================================================================================
+

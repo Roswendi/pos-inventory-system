@@ -1,0 +1,122 @@
+================================================================================
+    CREATE DESKTOP ICON - SCRIPT EDITOR METHOD (EASIEST!)
+================================================================================
+
+✅ USE SCRIPT EDITOR INSTEAD OF AUTOMATOR
+================================================================================
+
+STEP 1: Open Script Editor
+---------------------------
+1. Press: Cmd + Space
+2. Type: "Script Editor"
+3. Press: Enter
+
+STEP 2: Paste This Code
+-----------------------
+Delete everything in the editor and paste this:
+
+  tell application "Terminal"
+      activate
+      do script "cd '/Users/endiroswendi/Documents/ Old Laptop Documents/CAO/FINANCIAL REPORT/pos-inventory-system/backend' && if ! lsof -ti:5001 > /dev/null 2>&1; then node server.js & fi && sleep 3 && open 'http://localhost:5001'"
+  end tell
+
+STEP 3: Save as Application
+---------------------------
+1. Press: Cmd + S (or File → Save)
+2. Name: "TDO POS System"
+3. File Format: Choose "Application"
+4. Where: Desktop
+5. Click: "Save"
+
+DONE! Icon appears on desktop! 🎉
+
+Double-click to launch!
+
+================================================================================
+
+IF YOU DON'T SEE "APPLICATION" IN SCRIPT EDITOR:
+================================================
+
+STEP 1: Click "File Format" Dropdown
+-------------------------------------
+When saving, look for dropdown that says:
+  "File Format:"
+
+STEP 2: Select "Application"
+-----------------------------
+Click the dropdown and select:
+  "Application"
+
+If you don't see it:
+  - Make sure you're using Script Editor (not TextEdit)
+  - Try: File → Export
+  - Select: "Application" as format
+
+================================================================================
+
+ALTERNATIVE: TextEdit Method (If Script Editor Doesn't Work)
+=============================================================
+
+STEP 1: Open TextEdit
+----------------------
+1. Press: Cmd + Space
+2. Type: "TextEdit"
+3. Press: Enter
+
+STEP 2: Create Script
+---------------------
+1. Make sure it's in "Plain Text" mode:
+   - Format → Make Plain Text (or Shift+Cmd+T)
+
+2. Paste this:
+
+  #!/bin/bash
+  cd "/Users/endiroswendi/Documents/ Old Laptop Documents/CAO/FINANCIAL REPORT/pos-inventory-system/backend"
+  if ! lsof -ti:5001 > /dev/null 2>&1; then
+      osascript -e 'tell app "Terminal" to do script "cd '"'"'/Users/endiroswendi/Documents/ Old Laptop Documents/CAO/FINANCIAL REPORT/pos-inventory-system/backend'"'"' && node server.js"'
+      sleep 5
+  fi
+  open "http://localhost:5001"
+
+STEP 3: Save
+------------
+1. File → Save (Cmd+S)
+2. Name: "Start TDO POS.command"
+   (IMPORTANT: Must end with .command)
+3. Where: Desktop
+4. Format: Plain Text
+5. Click: "Save"
+
+STEP 4: Make Executable
+-----------------------
+1. Open Terminal
+2. Run:
+   chmod +x ~/Desktop/"Start TDO POS.command"
+
+STEP 5: Test
+------------
+Double-click "Start TDO POS.command" on desktop
+It should launch the app!
+
+================================================================================
+
+QUICKEST METHOD SUMMARY:
+========================
+
+METHOD 1: Script Editor (Recommended)
+--------------------------------------
+1. Open Script Editor
+2. Paste AppleScript code
+3. Save as Application
+4. Done!
+
+METHOD 2: TextEdit + Terminal
+------------------------------
+1. Create .command file in TextEdit
+2. Make executable in Terminal
+3. Done!
+
+Try Script Editor first - it's built into Mac and easiest! 🚀
+
+================================================================================
+

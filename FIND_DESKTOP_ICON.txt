@@ -1,0 +1,131 @@
+================================================================================
+    WHERE TO FIND THE DESKTOP ICON
+================================================================================
+
+✅ THE ICON IS ON YOUR DESKTOP
+================================================================================
+
+LOOK FOR THIS FILE:
+===================
+
+On your Desktop, you should see:
+  📄 "Start_TDO_POS.command"
+
+If you don't see it:
+====================
+
+STEP 1: Open Desktop Folder
+----------------------------
+1. Press: Cmd + Shift + D
+   (Opens Desktop in Finder)
+
+2. Or: Click Finder icon in Dock → Desktop
+
+STEP 2: Look for the File
+-------------------------
+The file name is:
+  "Start_TDO_POS.command"
+
+It might look like:
+  - A document icon
+  - A terminal/script icon
+  - A plain text file icon
+
+STEP 3: If Still Not Visible
+-----------------------------
+1. In Finder Desktop view:
+   - Press: Cmd + J (View Options)
+   - Make sure "Show all filename extensions" is checked
+
+2. Or sort by name:
+   - Press: Cmd + 2 (List view)
+   - Click "Name" column to sort
+
+================================================================================
+
+MANUAL COPY (If Missing):
+=========================
+
+STEP 1: Open Finder
+--------------------
+1. Press: Cmd + Space
+2. Type: Finder
+3. Press: Enter
+
+STEP 2: Navigate to Project Folder
+-----------------------------------
+Go to:
+  Documents → " Old Laptop Documents" → CAO → FINANCIAL REPORT → pos-inventory-system
+
+STEP 3: Find the File
+----------------------
+Look for: "Start_TDO_POS.command"
+
+STEP 4: Copy to Desktop
+-------------------------
+1. Right-click "Start_TDO_POS.command"
+2. Select: "Copy"
+3. Go to Desktop
+4. Right-click → "Paste"
+
+OR drag it to Desktop!
+
+================================================================================
+
+CHANGE THE ICON APPEARANCE:
+===========================
+
+STEP 1: Get an Image
+--------------------
+Find any image/icon you want (PNG, JPG, etc.)
+
+STEP 2: Change Icon
+-------------------
+1. Right-click "Start_TDO_POS.command" on Desktop
+2. Select: "Get Info" (or press Cmd + I)
+3. Click the small icon in the top-left corner of the Info window
+4. Press: Cmd + C (to copy your image)
+5. Click the icon in Info window again
+6. Press: Cmd + V (to paste)
+
+Done! Custom icon applied! 🎨
+
+================================================================================
+
+CREATE A BETTER LOOKING ALIAS:
+==============================
+
+STEP 1: Create Alias
+--------------------
+1. Right-click "Start_TDO_POS.command"
+2. Select: "Make Alias"
+3. A new file appears: "Start_TDO_POS.command alias"
+
+STEP 2: Rename
+--------------
+1. Click on "Start_TDO_POS.command alias"
+2. Press: Enter (to rename)
+3. Type: "TDO POS System"
+4. Press: Enter
+
+STEP 3: Change Icon (Optional)
+-------------------------------
+1. Right-click "TDO POS System"
+2. Get Info → Change icon (as above)
+
+Now you have a nice-looking alias! ✨
+
+================================================================================
+
+QUICK CHECK:
+============
+
+Run this in Terminal to see if file exists:
+
+  ls -la ~/Desktop/Start_TDO_POS.command
+
+If it shows the file, it's there!
+If it says "No such file", we need to copy it.
+
+================================================================================
+

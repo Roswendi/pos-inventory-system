@@ -1,0 +1,145 @@
+================================================================================
+    FIX: "NO SUCH FILE OR DIRECTORY" ERROR
+================================================================================
+
+✅ SOLUTION
+================================================================================
+
+THE PROBLEM:
+===========
+The error occurs because of spaces in your directory path or you're not
+in the correct directory.
+
+THE FIX:
+========
+
+STEP 1: Navigate to Correct Directory
+-------------------------------------
+Open Terminal and run:
+
+  cd "/Users/endiroswendi/Documents/ Old Laptop Documents/CAO/FINANCIAL REPORT/pos-inventory-system"
+
+IMPORTANT: Use quotes around the path because of spaces!
+
+STEP 2: Verify You're in Right Place
+-------------------------------------
+Run:
+
+  ls -la deploy.sh
+
+You should see the deploy.sh file listed.
+
+STEP 3: Run the Script
+----------------------
+Run:
+
+  bash deploy.sh
+
+OR:
+
+  ./deploy.sh
+
+================================================================================
+
+ALTERNATIVE: Manual Deployment Preparation
+==========================================
+
+If the script still doesn't work, prepare manually:
+
+STEP 1: Build Frontend
+----------------------
+  cd frontend
+  npm run build
+  cd ..
+
+STEP 2: Install Backend Dependencies
+------------------------------------
+  cd backend
+  npm install --production
+  cd ..
+
+STEP 3: Create Deployment Package
+----------------------------------
+Create a folder called "deploy-package" and copy:
+
+1. Copy backend folder (without node_modules):
+   cp -r backend deploy-package/
+   rm -rf deploy-package/backend/node_modules
+
+2. Copy frontend build:
+   cp -r frontend/build deploy-package/frontend-build
+
+3. Create archive:
+   tar -czf pos-system-deploy.tar.gz -C deploy-package .
+
+Done! Upload pos-system-deploy.tar.gz to Hostinger.
+
+================================================================================
+
+QUICK COMMANDS (Copy and Paste):
+=================================
+
+# Navigate to project
+cd "/Users/endiroswendi/Documents/ Old Laptop Documents/CAO/FINANCIAL REPORT/pos-inventory-system"
+
+# Check if script exists
+ls -la deploy.sh
+
+# Run the script
+bash deploy.sh
+
+================================================================================
+
+IF STILL GETTING ERROR:
+======================
+
+Check 1: Are you in the right directory?
+----------------------------------------
+  pwd
+
+Should show: .../pos-inventory-system
+
+Check 2: Does the file exist?
+-----------------------------
+  ls -la deploy.sh
+
+If it says "No such file", the file doesn't exist in current directory.
+
+Check 3: File permissions
+-------------------------
+  chmod +x deploy.sh
+
+Then try:
+  ./deploy.sh
+
+================================================================================
+
+MANUAL STEPS (If Script Fails):
+================================
+
+1. Build frontend:
+   cd frontend
+   npm run build
+   cd ..
+
+2. Create deployment folder:
+   mkdir deploy-package
+   mkdir deploy-package/backend
+   mkdir deploy-package/frontend-build
+
+3. Copy backend (excluding node_modules):
+   cp -r backend/* deploy-package/backend/
+   rm -rf deploy-package/backend/node_modules
+
+4. Copy frontend build:
+   cp -r frontend/build/* deploy-package/frontend-build/
+
+5. Create archive:
+   cd deploy-package
+   tar -czf ../pos-system-deploy.tar.gz .
+   cd ..
+
+6. Done! Upload pos-system-deploy.tar.gz
+
+================================================================================
+

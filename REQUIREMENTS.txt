@@ -1,0 +1,276 @@
+================================================================================
+    TDO POS SYSTEM - REQUIREMENTS FOR CLIENT DEPLOYMENT
+================================================================================
+
+✅ SYSTEM REQUIREMENTS FOR CLIENT USE
+================================================================================
+
+1. SERVER COMPUTER REQUIREMENTS:
+---------------------------------
+Operating System:
+  - Windows 10/11 or later
+  - macOS 10.15 or later
+  - Linux (Ubuntu 20.04+ recommended)
+
+Software:
+  - Node.js version 14.x or higher
+  - npm (comes with Node.js)
+  - Modern web browser (for testing)
+
+Hardware:
+  - RAM: Minimum 2GB, Recommended 4GB+
+  - Storage: 500MB for application + data storage
+  - CPU: Any modern processor (2015+)
+  - Network: Ethernet or WiFi adapter
+
+Network:
+  - Router/WiFi for local network access
+  - Internet connection (optional, for cloud deployment)
+
+================================================================================
+
+2. CLIENT DEVICE REQUIREMENTS:
+-------------------------------
+
+COMPUTERS (Windows/Mac):
+  - Modern web browser:
+    * Google Chrome (recommended)
+    * Microsoft Edge
+    * Mozilla Firefox
+    * Safari (Mac)
+  - Internet connection OR local network access
+  - Screen resolution: Minimum 1024x768
+  - No installation required!
+
+TABLETS/iPADS:
+  - iPad: iOS 12 or later
+  - Android Tablet: Android 8.0 or later
+  - Modern browser:
+    * Safari (iPad)
+    * Chrome (Android)
+  - Internet connection OR local network access
+  - Can install as PWA (Progressive Web App)
+
+SMARTPHONES (Optional):
+  - iOS 12+ or Android 8+
+  - Modern browser
+  - Works but optimized for tablets/computers
+
+================================================================================
+
+3. NETWORK REQUIREMENTS:
+------------------------
+
+LOCAL NETWORK DEPLOYMENT:
+  - Router/WiFi network
+  - All devices on same network
+  - No internet required after initial setup
+  - Fast local access
+
+CLOUD DEPLOYMENT:
+  - Internet connection required
+  - Stable connection recommended
+  - Works from anywhere
+  - Accessible 24/7
+
+================================================================================
+
+4. SOFTWARE DEPENDENCIES:
+--------------------------
+
+BACKEND:
+  - Node.js 14.x or higher
+  - npm (Node Package Manager)
+  - Express.js (installed via npm)
+  - Other dependencies (installed via npm install)
+
+FRONTEND:
+  - React (built into production bundle)
+  - No client-side installation needed
+  - Works in any modern browser
+
+================================================================================
+
+5. STORAGE REQUIREMENTS:
+-------------------------
+
+Application Files:
+  - ~200MB for application files
+  - ~100MB for node_modules
+  - ~50MB for build files
+
+Data Storage:
+  - Depends on usage
+  - Products, orders, customers data
+  - Images (if uploaded)
+  - Estimated: 100MB - 1GB per year (varies)
+
+Total: ~500MB - 2GB recommended
+
+================================================================================
+
+6. PERFORMANCE REQUIREMENTS:
+-----------------------------
+
+MINIMUM (Basic Usage):
+  - 2GB RAM
+  - Single location
+  - Up to 10 concurrent users
+  - Basic transactions
+
+RECOMMENDED (Standard Usage):
+  - 4GB+ RAM
+  - Multiple locations
+  - 10-50 concurrent users
+  - High transaction volume
+
+OPTIMAL (Enterprise):
+  - 8GB+ RAM
+  - Multiple locations
+  - 50+ concurrent users
+  - Cloud deployment
+  - Load balancing
+
+================================================================================
+
+7. SECURITY REQUIREMENTS:
+--------------------------
+
+ESSENTIAL:
+  - Change default passwords
+  - Use strong JWT_SECRET
+  - Configure firewall
+  - Regular backups
+
+RECOMMENDED:
+  - SSL/HTTPS certificate
+  - VPN for remote access
+  - User access controls
+  - Audit logging
+
+ENTERPRISE:
+  - SSL/HTTPS (required)
+  - Database encryption
+  - Regular security updates
+  - Professional hosting
+
+================================================================================
+
+8. DEPLOYMENT OPTIONS:
+----------------------
+
+OPTION 1: Local Network (Easiest)
+  Requirements:
+  - Server computer on local network
+  - Router/WiFi
+  - All devices on same network
+  - No internet needed
+
+OPTION 2: Cloud (Professional)
+  Requirements:
+  - Internet connection
+  - Cloud hosting account (Railway, Netlify, etc.)
+  - Domain name (optional)
+  - SSL certificate (recommended)
+
+OPTION 3: Hybrid
+  Requirements:
+  - Local server + cloud backup
+  - Internet for sync
+  - Best of both worlds
+
+================================================================================
+
+9. MAINTENANCE REQUIREMENTS:
+----------------------------
+
+DAILY:
+  - Monitor server status
+  - Check backups
+  - Review error logs
+
+WEEKLY:
+  - Review sales reports
+  - Check system performance
+  - User management
+
+MONTHLY:
+  - Update dependencies
+  - Security review
+  - Database optimization
+  - Performance tuning
+
+================================================================================
+
+10. SUPPORT REQUIREMENTS:
+--------------------------
+
+BASIC:
+  - Basic computer knowledge
+  - Browser usage
+  - Network connectivity understanding
+
+ADVANCED:
+  - Server administration
+  - Network configuration
+  - Troubleshooting skills
+
+ENTERPRISE:
+  - IT support team
+  - Database administration
+  - Security management
+
+================================================================================
+
+QUICK CHECKLIST FOR CLIENT:
+===========================
+
+SERVER COMPUTER:
+□ Node.js installed (14.x+)
+□ Application folder copied
+□ Dependencies installed (npm install)
+□ Frontend built (npm run build)
+□ Server configured
+□ Firewall configured
+□ IP address known
+
+CLIENT DEVICES:
+□ Modern browser installed
+□ Connected to network
+□ Can access server IP
+□ Tested login
+
+NETWORK:
+□ All devices on same network
+□ Router configured
+□ Firewall allows port 5001
+□ Tested connectivity
+
+SECURITY:
+□ Default passwords changed
+□ JWT_SECRET configured
+□ User accounts created
+□ Access controls set
+
+================================================================================
+
+SUMMARY:
+========
+
+MINIMUM REQUIREMENTS:
+- Server: Windows/Mac/Linux with Node.js
+- Clients: Any device with modern browser
+- Network: Local WiFi or internet
+- Storage: 500MB+
+
+RECOMMENDED:
+- Server: 4GB RAM, dedicated computer
+- Clients: Modern browsers, tablets/computers
+- Network: Stable connection
+- Storage: 2GB+
+
+The system is designed to work on minimal requirements
+but performs best with recommended specifications.
+
+================================================================================
+

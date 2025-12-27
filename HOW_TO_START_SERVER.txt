@@ -1,0 +1,128 @@
+================================================================================
+    HOW TO START THE SERVER - FIXED
+================================================================================
+
+✅ SERVER.JS EXISTS AND IS WORKING
+Location: pos-inventory-system/backend/server.js
+
+================================================================================
+METHOD 1: USE THE AUTOMATED SCRIPT (EASIEST)
+================================================================================
+
+Run this command:
+  cd "/Users/endiroswendi/Documents/ Old Laptop Documents/CAO/FINANCIAL REPORT/pos-inventory-system"
+  ./START_SERVER.sh
+
+The script will:
+✓ Check if Node.js is installed
+✓ Verify server.js exists
+✓ Check if port is in use (and offer to kill it)
+✓ Install dependencies if needed
+✓ Start the server
+
+================================================================================
+METHOD 2: MANUAL START
+================================================================================
+
+STEP 1: Navigate to Backend Directory
+--------------------------------------
+  cd "/Users/endiroswendi/Documents/ Old Laptop Documents/CAO/FINANCIAL REPORT/pos-inventory-system/backend"
+
+STEP 2: Check if Port is in Use
+--------------------------------
+  lsof -ti:5001
+
+If it shows a number, kill it:
+  lsof -ti:5001 | xargs kill
+
+STEP 3: Install Dependencies (First Time Only)
+-----------------------------------------------
+  npm install
+
+STEP 4: Start Server
+--------------------
+  node server.js
+
+You should see:
+  🚀 Server running on http://localhost:5001
+  📊 API endpoints available at http://localhost:5001/api
+
+================================================================================
+METHOD 3: QUICK START (One Command)
+================================================================================
+
+  cd "/Users/endiroswendi/Documents/ Old Laptop Documents/CAO/FINANCIAL REPORT/pos-inventory-system/backend" && lsof -ti:5001 | xargs kill 2>/dev/null; node server.js
+
+================================================================================
+VERIFY SERVER IS RUNNING
+================================================================================
+
+Test in browser:
+  http://localhost:5001/api/health
+
+Should return:
+  {"status":"OK","message":"POS Inventory System API is running"}
+
+Or test with curl:
+  curl http://localhost:5001/api/health
+
+================================================================================
+TROUBLESHOOTING
+================================================================================
+
+PROBLEM: "Port 5001 is already in use"
+---------------------------------------
+SOLUTION:
+  lsof -ti:5001 | xargs kill
+  Then start server again
+
+PROBLEM: "Cannot find module"
+-----------------------------
+SOLUTION:
+  cd backend
+  npm install
+
+PROBLEM: "server.js not found"
+------------------------------
+SOLUTION:
+  Make sure you're in backend directory:
+    cd backend
+    ls server.js  # Should show the file
+
+PROBLEM: "Permission denied"
+----------------------------
+SOLUTION:
+  chmod +x START_SERVER.sh
+  ./START_SERVER.sh
+
+================================================================================
+QUICK REFERENCE
+================================================================================
+
+START SERVER:
+  cd backend && node server.js
+
+STOP SERVER:
+  Press Ctrl+C in terminal
+
+KILL PROCESS ON PORT:
+  lsof -ti:5001 | xargs kill
+
+CHECK IF RUNNING:
+  curl http://localhost:5001/api/health
+
+================================================================================
+SERVER LOCATION
+================================================================================
+
+Server file is at:
+  pos-inventory-system/backend/server.js
+
+To start:
+  1. cd backend
+  2. node server.js
+
+That's it! The server will start on port 5001.
+
+================================================================================
+
