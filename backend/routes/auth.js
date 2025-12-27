@@ -117,11 +117,28 @@ const initDefaultUser = () => {
 // Initialize on module load
 initDefaultUser();
 
-// Also add a route to manually initialize/reset users
+// Also add routes to manually initialize/reset users (both GET and POST for convenience)
+router.get('/init-users', (req, res) => {
+  try {
+    initDefaultUser();
+    const users = readUsers();
+    res.json({ 
+      message: 'Default users initialized successfully',
+      users: users.map(u => ({ username: u.username, role: u.role }))
+    });
+  } catch (error) {
+    res.status(500).json({ error: 'Failed to initialize users', details: error.message });
+  }
+});
+
 router.post('/init-users', (req, res) => {
   try {
     initDefaultUser();
-    res.json({ message: 'Default users initialized successfully' });
+    const users = readUsers();
+    res.json({ 
+      message: 'Default users initialized successfully',
+      users: users.map(u => ({ username: u.username, role: u.role }))
+    });
   } catch (error) {
     res.status(500).json({ error: 'Failed to initialize users', details: error.message });
   }
