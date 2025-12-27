@@ -7,13 +7,21 @@ const getApiBaseUrl = () => {
     return process.env.REACT_APP_API_URL;
   }
   
-  // Get current hostname (works for both localhost and IP access)
+  // Get current hostname and protocol
   const hostname = window.location.hostname;
-  const port = window.location.port || '5001';
+  const protocol = window.location.protocol; // http: or https:
+  const port = window.location.port;
   
-  // If accessing via IP address, use that IP for API
+  // If on Railway or production (not localhost), use same origin
   if (hostname !== 'localhost' && hostname !== '127.0.0.1') {
-    return `http://${hostname}:${port}/api`;
+    // Production: use same origin (Railway serves both frontend and API)
+    if (port) {
+      // If port is specified, use it (for local network access)
+      return `${protocol}//${hostname}:${port}/api`;
+    } else {
+      // No port means production (Railway uses default ports 80/443)
+      return `${protocol}//${hostname}/api`;
+    }
   }
   
   // Default to localhost for local development
