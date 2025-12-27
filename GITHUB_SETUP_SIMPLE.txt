@@ -1,0 +1,107 @@
+================================================================================
+    SIMPLE GITHUB SETUP - STEP BY STEP
+================================================================================
+
+✅ GET YOUR FILES ON GITHUB (FIX PASSWORD ISSUE)
+================================================================================
+
+STEP 1: CREATE PERSONAL ACCESS TOKEN
+=====================================
+
+GitHub doesn't accept passwords - you need a token!
+
+1. Go to: https://github.com/settings/tokens
+2. Click: "Generate new token" → "Generate new token (classic)"
+3. Give it a name: "POS System"
+4. Expiration: 90 days (or no expiration)
+5. Check: ✅ repo (Full control of private repositories)
+6. Click: Generate token
+7. ⚠️ COPY THE TOKEN NOW! (ghp_xxxxxxxxxxxxx)
+   You won't see it again!
+
+================================================================================
+
+STEP 2: CREATE GITHUB REPOSITORY
+=================================
+
+1. Go to: https://github.com
+2. Click: + (top right) → New repository
+3. Name: pos-inventory-system
+4. Description: POS Inventory System
+5. Choose: Public or Private
+6. DO NOT check "Initialize with README"
+7. Click: Create repository
+8. Copy the URL shown (you'll need it)
+
+================================================================================
+
+STEP 3: PUSH YOUR CODE
+=======================
+
+Open Terminal on your Mac and run:
+
+# Navigate to project
+cd "/Users/endiroswendi/Documents/ Old Laptop Documents/CAO/FINANCIAL REPORT/pos-inventory-system"
+
+# Initialize Git
+git init
+
+# Configure Git (first time only)
+git config user.name "Your Name"
+git config user.email "your.email@example.com"
+
+# Add all files
+git add .
+
+# Commit
+git commit -m "Initial commit: POS Inventory System"
+
+# Add GitHub remote (replace with YOUR repository URL)
+git remote add origin https://github.com/your-username/pos-inventory-system.git
+
+# Push to GitHub
+git branch -M main
+git push -u origin main
+
+WHEN ASKED FOR PASSWORD:
+- Username: your-github-username
+- Password: PASTE YOUR TOKEN HERE (not your password!)
+
+================================================================================
+
+STEP 4: VERIFY
+==============
+
+1. Go to your GitHub repository
+2. You should see all your files
+3. Done! ✅
+
+================================================================================
+
+IF IT STILL DOESN'T WORK:
+==========================
+
+OPTION A: Use GitHub CLI (Easier)
+----------------------------------
+  brew install gh
+  gh auth login
+  git push origin main
+
+OPTION B: Check Token
+---------------------
+- Make sure token has "repo" scope
+- Token hasn't expired
+- Copied correctly (no spaces)
+
+================================================================================
+
+NEXT: DEPLOY TO RAILWAY
+=======================
+
+Once files are on GitHub, see:
+  GITHUB_TO_RAILWAY_COMPLETE.md
+
+For Railway deployment guide!
+
+================================================================================
+

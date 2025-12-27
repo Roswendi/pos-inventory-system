@@ -1,0 +1,215 @@
+================================================================================
+    HOSTINGER VPS - QUICK START GUIDE
+================================================================================
+
+✅ HOSTINGER WANTS YOU TO USE VPS - HERE'S HOW
+================================================================================
+
+STEP 1: GET VPS ACCESS
+=======================
+
+1. Log into Hostinger hPanel
+2. Go to: VPS section
+3. Note:
+   - IP Address: (your VPS IP)
+   - SSH Port: 22 (usually)
+   - Root Password: (from Hostinger)
+
+================================================================================
+
+STEP 2: CONNECT TO VPS
+=======================
+
+On Mac/Linux Terminal:
+----------------------
+  ssh root@your-vps-ip
+  # Enter password when asked
+
+On Windows:
+-----------
+1. Download PuTTY: https://putty.org
+2. Enter IP address
+3. Port: 22
+4. Click Connect
+5. Enter username: root
+6. Enter password
+
+================================================================================
+
+STEP 3: INSTALL NODE.JS
+========================
+
+Copy and paste these commands one by one:
+
+  apt update && apt upgrade -y
+  curl -fsSL https://deb.nodesource.com/setup_18.x | bash -
+  apt install -y nodejs
+  node --version
+
+Should show: v18.x.x
+
+================================================================================
+
+STEP 4: INSTALL PM2
+===================
+
+  npm install -g pm2
+
+PM2 keeps your app running!
+
+================================================================================
+
+STEP 5: UPLOAD YOUR FILES
+==========================
+
+OPTION A: From Your Computer (Mac/Linux)
+------------------------------------------
+  cd "/Users/endiroswendi/Documents/ Old Laptop Documents/CAO/FINANCIAL REPORT/pos-inventory-system"
+  scp hostinger-pos-system.tar.gz root@your-vps-ip:/root/
+
+OPTION B: Download on VPS
+--------------------------
+If you uploaded to Hostinger File Manager:
+
+  cd /root
+  # Find where Hostinger put your file
+  # Or ask Hostinger support where it is
+
+================================================================================
+
+STEP 6: EXTRACT AND SETUP
+==========================
+
+  mkdir -p /var/www/pos-system
+  cd /var/www/pos-system
+  mv /root/hostinger-pos-system.tar.gz .
+  tar -xzf hostinger-pos-system.tar.gz
+  npm install --production
+
+Wait for npm install to finish (2-5 minutes)
+
+================================================================================
+
+STEP 7: CONFIGURE
+==================
+
+  cp .env.example .env
+  nano .env
+
+Add these lines:
+  NODE_ENV=production
+  PORT=5001
+  JWT_SECRET=your-secret-key-here
+
+Save: Ctrl+X, then Y, then Enter
+
+Set permissions:
+  chmod -R 755 .
+  chmod -R 777 data
+  chmod -R 777 uploads
+
+================================================================================
+
+STEP 8: START APPLICATION
+==========================
+
+  pm2 start server.js --name "pos-system"
+  pm2 save
+  pm2 startup
+
+Copy the command that pm2 startup shows and run it!
+
+================================================================================
+
+STEP 9: INSTALL NGINX
+=====================
+
+  apt install -y nginx
+  systemctl start nginx
+
+================================================================================
+
+STEP 10: CONFIGURE NGINX
+=========================
+
+  nano /etc/nginx/sites-available/pos-system
+
+Paste this (replace your-domain.com with your domain):
+
+  server {
+      listen 80;
+      server_name your-domain.com;
+
+      location / {
+          root /var/www/pos-system/public;
+          try_files $uri $uri/ /index.html;
+      }
+
+      location /api {
+          proxy_pass http://localhost:5001;
+          proxy_set_header Host $host;
+          proxy_set_header X-Real-IP $remote_addr;
+      }
+  }
+
+Save: Ctrl+X, Y, Enter
+
+Enable site:
+  ln -s /etc/nginx/sites-available/pos-system /etc/nginx/sites-enabled/
+  nginx -t
+  systemctl reload nginx
+
+================================================================================
+
+STEP 11: SET UP SSL (HTTPS)
+============================
+
+  apt install -y certbot python3-certbot-nginx
+  certbot --nginx -d your-domain.com
+
+Follow the prompts!
+
+================================================================================
+
+STEP 12: TEST
+=============
+
+Open browser:
+  https://your-domain.com
+
+Should see login page!
+
+Login:
+  Username: admin
+  Password: admin123
+
+Done! ✅
+
+================================================================================
+
+USEFUL COMMANDS:
+================
+
+Check if app is running:
+  pm2 status
+
+View logs:
+  pm2 logs pos-system
+
+Restart app:
+  pm2 restart pos-system
+
+Check Nginx:
+  systemctl status nginx
+
+================================================================================
+
+NEED HELP?
+==========
+
+See: HOSTINGER_VPS_DEPLOYMENT.md for detailed guide
+
+Or contact Hostinger support - they can help with VPS setup!
+
+================================================================================
+

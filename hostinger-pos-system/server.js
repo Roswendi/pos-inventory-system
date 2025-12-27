@@ -41,7 +41,6 @@ dirs.forEach(dir => {
   }
 });
 
-// Create uploads directory for images
 if (!fs.existsSync(uploadsDir)) {
   fs.mkdirSync(uploadsDir, { recursive: true });
 }
@@ -77,16 +76,6 @@ const initDataFiles = () => {
 
 initDataFiles();
 
-// Test outlets route before registering
-try {
-  console.log('Testing outlets route import...');
-  const testOutlets = require('./routes/outlets');
-  console.log('✓ Outlets route imported successfully');
-} catch (error) {
-  console.error('✗ ERROR importing outlets route:', error.message);
-  console.error(error.stack);
-}
-
 // Routes
 app.use('/api/products', productsRoutes);
 app.use('/api/inventory', inventoryRoutes);
@@ -102,98 +91,28 @@ app.use('/api/upload', uploadRoutes);
 app.use('/api/pos-reports', posReportsRoutes);
 app.use('/api/outlets', outletsRoutes);
 
-// Debug: Log all registered routes
-console.log('📋 Registered API routes:');
-console.log('  - /api/products');
-console.log('  - /api/inventory');
-console.log('  - /api/pos');
-console.log('  - /api/accounting');
-console.log('  - /api/customers');
-console.log('  - /api/whatsapp');
-console.log('  - /api/dashboard');
-console.log('  - /api/auth');
-console.log('  - /api/delivery');
-console.log('  - /api/payments');
-console.log('  - /api/upload');
-console.log('  - /api/pos-reports');
-console.log('  - /api/outlets ✓');
-
 // Health check
 app.get('/api/health', (req, res) => {
   res.json({ status: 'OK', message: 'POS Inventory System API is running' });
 });
 
-// Serve React app (when frontend is built)
-// Check for public folder first (Railway), then frontend/build (local)
-const frontendBuildPath = fs.existsSync(path.join(__dirname, 'public'))
-  ? path.join(__dirname, 'public')
-  : path.join(__dirname, '../frontend/build');
-
-// Check if frontend build exists and serve it
-if (fs.existsSync(frontendBuildPath)) {
-  console.log('✓ Frontend build found, serving static files');
-  app.use(express.static(frontendBuildPath));
-  
-  // Serve React app for all non-API routes
+// Serve React app from public folder (Hostinger structure)
+const publicPath = path.join(__dirname, 'public');
+if (fs.existsSync(publicPath)) {
+  app.use(express.static(publicPath));
   app.get('*', (req, res) => {
-    // Don't serve frontend for API routes
     if (req.path.startsWith('/api')) {
       return res.status(404).json({ error: 'API endpoint not found' });
     }
-    res.sendFile(path.join(frontendBuildPath, 'index.html'));
-  });
-} else {
-  console.log('⚠️  Frontend build not found. Run: cd frontend && npm run build');
-  // Provide helpful message
-  app.get('/', (req, res) => {
-    res.send(`
-      <html>
-        <head><title>TDO POS System</title></head>
-        <body style="font-family: Arial; padding: 40px; text-align: center;">
-          <h1>TDO POS System</h1>
-          <p>Frontend not built yet.</p>
-          <p>Please run: <code>cd frontend && npm run build</code></p>
-          <p>Then restart the server.</p>
-          <hr>
-          <p>API is running at: <a href="/api/health">/api/health</a></p>
-        </body>
-      </html>
-    `);
+    res.sendFile(path.join(publicPath, 'index.html'));
   });
 }
 
 app.listen(PORT, '0.0.0.0', () => {
-  const os = require('os');
-  const networkInterfaces = os.networkInterfaces();
-  let localIP = 'localhost';
-  
-  // Find local IP address
-  for (const interfaceName in networkInterfaces) {
-    const addresses = networkInterfaces[interfaceName];
-    for (const address of addresses) {
-      if (address.family === 'IPv4' && !address.internal) {
-        localIP = address.address;
-        break;
-      }
-    }
-    if (localIP !== 'localhost') break;
+  console.log(`🚀 Server running on port ${PORT}`);
+  console.log(`📊 API: http://localhost:${PORT}/api`);
+  if (fs.existsSync(publicPath)) {
+    console.log(`🌐 Frontend: http://localhost:${PORT}`);
   }
-  
-  console.log(`🚀 Server running on http://localhost:${PORT}`);
-  console.log(`📊 API endpoints available at http://localhost:${PORT}/api`);
-  console.log(`🌐 Access from other devices on your network:`);
-  console.log(`   http://${localIP}:${PORT}`);
-  if (process.env.NODE_ENV === 'production') {
-    console.log(`💡 Frontend served from build directory`);
-  }
-}).on('error', (err) => {
-  if (err.code === 'EADDRINUSE') {
-    console.error(`❌ Port ${PORT} is already in use!`);
-    console.error(`   Please stop the other process or use a different port.`);
-    console.error(`   To kill process on port ${PORT}, run: lsof -ti:${PORT} | xargs kill`);
-  } else {
-    console.error('❌ Server error:', err);
-  }
-  process.exit(1);
 });
 

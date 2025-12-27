@@ -1,0 +1,206 @@
+================================================================================
+    FIX: "NO SUCH DIRECTORY" ERROR WHEN PUSHING
+================================================================================
+
+✅ THE PROBLEM:
+===============
+You're probably not in the correct directory, or the path has spaces.
+
+================================================================================
+
+SOLUTION: USE THE CORRECT DIRECTORY
+====================================
+
+STEP 1: Open Terminal
+---------------------
+Press: Cmd + Space
+Type: Terminal
+Press: Enter
+
+STEP 2: Navigate to Project (IMPORTANT!)
+----------------------------------------
+Copy and paste this EXACT command:
+
+  cd "/Users/endiroswendi/Documents/ Old Laptop Documents/CAO/FINANCIAL REPORT/pos-inventory-system"
+
+IMPORTANT: 
+- Use quotes around the entire path (because of spaces)
+- Copy the ENTIRE path exactly
+
+STEP 3: Verify You're in Right Place
+-------------------------------------
+Run:
+
+  pwd
+
+Should show: .../pos-inventory-system
+
+Run:
+
+  ls -la
+
+Should show: backend/, frontend/, package.json, etc.
+
+================================================================================
+
+STEP 4: Initialize Git (If Not Done)
+=====================================
+
+Run:
+
+  git init
+
+This creates the .git folder.
+
+================================================================================
+
+STEP 5: Push to GitHub
+=======================
+
+OPTION A: Use the Script (Easiest)
+-----------------------------------
+  bash PUSH_TO_GITHUB.sh
+
+Follow the prompts!
+
+OPTION B: Manual Push
+---------------------
+  git add .
+  git commit -m "Initial commit: POS System"
+  git remote add origin https://github.com/your-username/pos-inventory-system.git
+  git branch -M main
+  git push -u origin main
+
+When asked for password: Use your Personal Access Token!
+
+================================================================================
+
+IF STILL GETTING ERROR:
+=======================
+
+CHECK 1: Are you in the right directory?
+----------------------------------------
+  pwd
+
+Should end with: pos-inventory-system
+
+If not, run the cd command again.
+
+CHECK 2: Does .git folder exist?
+--------------------------------
+  ls -la .git
+
+If it says "No such file", run: git init
+
+CHECK 3: Check Git status
+-------------------------
+  git status
+
+Should show your files.
+
+If it says "not a git repository", run: git init
+
+================================================================================
+
+QUICK COPY-PASTE COMMANDS:
+==========================
+
+# Navigate to project (copy entire line)
+cd "/Users/endiroswendi/Documents/ Old Laptop Documents/CAO/FINANCIAL REPORT/pos-inventory-system"
+
+# Check where you are
+pwd
+
+# Initialize Git (if needed)
+git init
+
+# Check status
+git status
+
+# Add files
+git add .
+
+# Commit
+git commit -m "Initial commit"
+
+# Add remote (replace with YOUR repository URL)
+git remote add origin https://github.com/your-username/pos-inventory-system.git
+
+# Push
+git push -u origin main
+
+================================================================================
+
+COMMON MISTAKES:
+================
+
+MISTAKE 1: Not using quotes
+---------------------------
+❌ cd /Users/endiroswendi/Documents/ Old Laptop Documents/...
+✅ cd "/Users/endiroswendi/Documents/ Old Laptop Documents/..."
+
+MISTAKE 2: Wrong directory
+--------------------------
+❌ Running from wrong folder
+✅ Make sure you're in pos-inventory-system folder
+
+MISTAKE 3: Git not initialized
+------------------------------
+❌ Forgetting git init
+✅ Run git init first
+
+================================================================================
+
+VERIFY EVERYTHING:
+==================
+
+Run these commands to check:
+
+  pwd
+  # Should show: .../pos-inventory-system
+
+  ls -la
+  # Should show: backend/, frontend/, etc.
+
+  git status
+  # Should show files or "nothing to commit"
+
+  git remote -v
+  # Should show your GitHub URL (after adding remote)
+
+================================================================================
+
+IF STILL NOT WORKING:
+=====================
+
+Try this step by step:
+
+1. Open Terminal
+2. Copy this EXACT command:
+   cd "/Users/endiroswendi/Documents/ Old Laptop Documents/CAO/FINANCIAL REPORT/pos-inventory-system"
+
+3. Press Enter
+
+4. Run:
+   pwd
+   # Verify you're in the right place
+
+5. Run:
+   git init
+
+6. Run:
+   git add .
+
+7. Run:
+   git commit -m "Initial commit"
+
+8. Run (replace with YOUR URL):
+   git remote add origin https://github.com/your-username/pos-inventory-system.git
+
+9. Run:
+   git push -u origin main
+
+10. When asked for password: Use your Personal Access Token!
+
+================================================================================
+

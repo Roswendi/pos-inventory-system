@@ -1,0 +1,42 @@
+[
+  {
+    "id": "c8ff4665-1927-4af3-a3d0-eeae7cd9b338",
+    "date": "2025-12-22T22:28:39.251Z",
+    "accountCode": "11000",
+    "type": "debit",
+    "amount": 28000,
+    "description": "Penjualan Order #ORD-1766442519250",
+    "reference": "386049a8-0b44-490a-8794-7b5d28e03b8c",
+    "referenceType": "sale"
+  },
+  {
+    "id": "636620bd-463d-461c-b12f-afe70fb3856d",
+    "date": "2025-12-22T22:28:39.251Z",
+    "accountCode": "41000",
+    "type": "credit",
+    "amount": 28000,
+    "description": "Penjualan Order #ORD-1766442519250",
+    "reference": "386049a8-0b44-490a-8794-7b5d28e03b8c",
+    "referenceType": "sale"
+  },
+  {
+    "id": "b56733a0-9e05-41b9-9440-54f21f117b1b",
+    "date": "2025-12-22T22:28:39.251Z",
+    "accountCode": "51000",
+    "type": "debit",
+    "amount": 10000,
+    "description": "HPP Order #ORD-1766442519250",
+    "reference": "386049a8-0b44-490a-8794-7b5d28e03b8c",
+    "referenceType": "sale"
+  },
+  {
+    "id": "69566ec0-4c8a-4537-9a9a-945b347a8ce3",
+    "date": "2025-12-22T22:28:39.251Z",
+    "accountCode": "13000",
+    "type": "credit",
+    "amount": 10000,
+    "description": "HPP Order #ORD-1766442519250",
+    "reference": "386049a8-0b44-490a-8794-7b5d28e03b8c",
+    "referenceType": "sale"
+  }
+]

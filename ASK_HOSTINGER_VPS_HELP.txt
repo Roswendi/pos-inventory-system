@@ -1,0 +1,81 @@
+================================================================================
+    WHAT TO ASK HOSTINGER SUPPORT FOR VPS SETUP
+================================================================================
+
+✅ HOSTINGER WANTS YOU TO USE VPS - GET THEM TO HELP!
+================================================================================
+
+WHEN YOU CONTACT HOSTINGER SUPPORT:
+===================================
+
+Tell them:
+
+"I need help setting up a Node.js application on my VPS. I've uploaded the files. Can you help me:
+
+1. Install Node.js 18.x on the VPS
+2. Install PM2 process manager
+3. Install Nginx web server
+4. Extract my uploaded file: hostinger-pos-system.tar.gz
+5. Install dependencies: npm install --production
+6. Create .env file with:
+   NODE_ENV=production
+   PORT=5001
+   JWT_SECRET=my-secret-key
+7. Start the application with PM2
+8. Configure Nginx as reverse proxy
+9. Set up SSL certificate
+
+The application files are already uploaded. I just need help with the server setup."
+
+================================================================================
+
+OR ASK THEM TO RUN THIS SCRIPT:
+================================
+
+You can ask them to:
+
+1. Upload VPS_SETUP_SCRIPT.sh to your VPS
+2. Run: bash VPS_SETUP_SCRIPT.sh
+3. This will install Node.js, PM2, and Nginx automatically
+
+Then you can do the rest, or ask them to continue!
+
+================================================================================
+
+WHAT THEY CAN DO FOR YOU:
+=========================
+
+✅ Install Node.js
+✅ Install PM2
+✅ Install Nginx
+✅ Extract your files
+✅ Run npm install
+✅ Configure .env file
+✅ Start application
+✅ Set up Nginx
+✅ Configure SSL
+
+Just ask them nicely - they're usually very helpful! 😊
+
+================================================================================
+
+ALTERNATIVE: DO IT YOURSELF
+===========================
+
+If you want to do it yourself:
+
+1. See: VPS_QUICK_START.txt for quick steps
+2. See: HOSTINGER_VPS_DEPLOYMENT.md for complete guide
+
+================================================================================
+
+SUMMARY:
+========
+
+✅ Hostinger wants you to use VPS (that's fine!)
+✅ Ask their support to help you set it up
+✅ Or follow the guides I created
+✅ VPS gives you full control and better performance!
+
+================================================================================
+

@@ -1,0 +1,43 @@
+HOSTINGER DEPLOYMENT INSTRUCTIONS
+==================================
+
+METHOD 1: Via File Manager (Recommended)
+-----------------------------------------
+1. Upload ALL files in this folder to Hostinger
+2. Via hPanel → File Manager
+3. Upload to your domain folder (public_html or www)
+4. OR upload to a subfolder like: public_html/pos-system
+
+METHOD 2: Via FTP
+-----------------
+1. Use FileZilla
+2. Connect to Hostinger FTP
+3. Upload all files in this folder
+4. Maintain folder structure
+
+METHOD 3: Via Hostinger Node.js App
+------------------------------------
+1. In hPanel, go to Node.js section
+2. Create new Node.js application
+3. Set startup file: server.js
+4. Upload all files from this folder
+5. Set port (usually provided by Hostinger)
+6. Start application
+
+AFTER UPLOAD:
+-------------
+1. SSH to server or use Terminal in hPanel
+2. Navigate to uploaded folder
+3. Install dependencies: npm install --production
+4. Create .env file: cp .env.example .env
+5. Edit .env with your settings
+6. Set permissions:
+   chmod -R 755 .
+   chmod -R 777 data
+   chmod -R 777 uploads
+7. Start: npm start (or use PM2: pm2 start server.js)
+
+ACCESS:
+-------
+- http://your-domain.com (if in public_html)
+- http://your-domain.com/pos-system (if in subfolder)

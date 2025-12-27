@@ -1,0 +1,58 @@
+[
+  {
+    "id": "2189faa9-e9c8-495a-bed7-969be05b7353",
+    "name": "Mindiology Coffe",
+    "address": "Fresh Market Bintaro",
+    "city": "Tangerang Selatang",
+    "province": "Banten",
+    "postalCode": "15222",
+    "phone": "08118958598",
+    "email": "rrendi@gmail.com",
+    "manager": "Rendi",
+    "status": "active",
+    "createdAt": "2025-12-25T20:34:36.084Z",
+    "updatedAt": "2025-12-25T20:34:36.084Z"
+  },
+  {
+    "id": "203ec60d-63ea-4034-a666-ec1777cc613c",
+    "name": "Kamarasan Soulfood Nusantara",
+    "address": "Sunset Avenue Citra 8",
+    "city": "West Jakarta",
+    "province": "Jakarta",
+    "postalCode": "",
+    "phone": "",
+    "email": "",
+    "manager": "Beni",
+    "status": "active",
+    "createdAt": "2025-12-25T20:35:03.560Z",
+    "updatedAt": "2025-12-25T20:35:03.560Z"
+  },
+  {
+    "id": "764ad8e2-533a-487a-859b-648e7ba22237",
+    "name": "Sandwichery ",
+    "address": "Sunset Avenue Citra 8",
+    "city": "West Jakarta",
+    "province": "Jakarta",
+    "postalCode": "",
+    "phone": "",
+    "email": "",
+    "manager": "Syafrudin",
+    "status": "active",
+    "createdAt": "2025-12-25T20:35:46.235Z",
+    "updatedAt": "2025-12-25T20:35:46.235Z"
+  },
+  {
+    "id": "6d020a89-b288-4cba-9a5c-9cca2f3b9692",
+    "name": "Mindiology Danareksi",
+    "address": "Danareksa Tower jalan Merdeka Selatan",
+    "city": "Jakarta Pusat",
+    "province": "Jakarta",
+    "postalCode": "",
+    "phone": "",
+    "email": "",
+    "manager": "Syafrudin",
+    "status": "active",
+    "createdAt": "2025-12-25T20:36:22.408Z",
+    "updatedAt": "2025-12-25T20:36:22.408Z"
+  }
+]
