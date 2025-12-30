@@ -144,10 +144,13 @@ const initDefaultUser = () => {
 };
 
 // Initialize on module load
-// Use setImmediate to ensure it runs after module is fully loaded
-setImmediate(() => {
+// Initialize users immediately (setImmediate might cause issues in some environments)
+try {
   initDefaultUser();
-});
+} catch (error) {
+  console.error('Error initializing users on module load:', error);
+  // Don't throw - let it initialize on first request
+}
 
 // Debug endpoint to check users
 router.get('/check-users', (req, res) => {
