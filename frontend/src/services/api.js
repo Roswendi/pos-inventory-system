@@ -15,13 +15,9 @@ const getApiBaseUrl = () => {
   // If on Railway or production (not localhost), use same origin
   if (hostname !== 'localhost' && hostname !== '127.0.0.1') {
     // Production: use same origin (Railway serves both frontend and API)
-    if (port) {
-      // If port is specified, use it (for local network access)
-      return `${protocol}//${hostname}:${port}/api`;
-    } else {
-      // No port means production (Railway uses default ports 80/443)
-      return `${protocol}//${hostname}/api`;
-    }
+    // IMPORTANT: Always use the same protocol (HTTPS in production)
+    // Never include port in production (Railway handles this)
+    return `${protocol}//${hostname}/api`;
   }
   
   // Default to localhost for local development
