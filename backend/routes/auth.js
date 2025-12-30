@@ -228,28 +228,82 @@ router.post('/test-login', async (req, res) => {
 // Also add routes to manually initialize/reset users (both GET and POST for convenience)
 router.get('/init-users', (req, res) => {
   try {
+    // Force reset by deleting existing users file first
+    const usersPath = path.join(__dirname, '../data/users/users.json');
+    if (fs.existsSync(usersPath)) {
+      fs.unlinkSync(usersPath);
+      console.log('[INIT] Deleted existing users.json to force reset');
+    }
+    
+    // Reinitialize
     initDefaultUser();
+    
+    // Verify users were created
     const users = readUsers();
+    const testPassword = 'admin123';
+    
+    // Test that passwords work
+    const passwordTests = users.map(u => {
+      if (['admin', 'manager', 'cashier'].includes(u.username)) {
+        const test = bcrypt.compareSync(testPassword, u.password);
+        return { username: u.username, passwordWorks: test };
+      }
+      return null;
+    }).filter(Boolean);
+    
     res.json({ 
       message: 'Default users initialized successfully',
       userCount: users.length,
-      users: users.map(u => ({ username: u.username, role: u.role, email: u.email }))
+      users: users.map(u => ({ username: u.username, role: u.role, email: u.email })),
+      passwordTests: passwordTests,
+      loginCredentials: {
+        username: 'admin',
+        password: 'admin123'
+      }
     });
   } catch (error) {
+    console.error('[INIT] Error:', error);
     res.status(500).json({ error: 'Failed to initialize users', details: error.message });
   }
 });
 
 router.post('/init-users', (req, res) => {
   try {
+    // Force reset by deleting existing users file first
+    const usersPath = path.join(__dirname, '../data/users/users.json');
+    if (fs.existsSync(usersPath)) {
+      fs.unlinkSync(usersPath);
+      console.log('[INIT] Deleted existing users.json to force reset');
+    }
+    
+    // Reinitialize
     initDefaultUser();
+    
+    // Verify users were created
     const users = readUsers();
+    const testPassword = 'admin123';
+    
+    // Test that passwords work
+    const passwordTests = users.map(u => {
+      if (['admin', 'manager', 'cashier'].includes(u.username)) {
+        const test = bcrypt.compareSync(testPassword, u.password);
+        return { username: u.username, passwordWorks: test };
+      }
+      return null;
+    }).filter(Boolean);
+    
     res.json({ 
       message: 'Default users initialized successfully',
       userCount: users.length,
-      users: users.map(u => ({ username: u.username, role: u.role, email: u.email }))
+      users: users.map(u => ({ username: u.username, role: u.role, email: u.email })),
+      passwordTests: passwordTests,
+      loginCredentials: {
+        username: 'admin',
+        password: 'admin123'
+      }
     });
   } catch (error) {
+    console.error('[INIT] Error:', error);
     res.status(500).json({ error: 'Failed to initialize users', details: error.message });
   }
 });
