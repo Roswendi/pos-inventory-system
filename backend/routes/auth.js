@@ -144,7 +144,10 @@ const initDefaultUser = () => {
 };
 
 // Initialize on module load
-initDefaultUser();
+// Use setImmediate to ensure it runs after module is fully loaded
+setImmediate(() => {
+  initDefaultUser();
+});
 
 // Debug endpoint to check users
 router.get('/check-users', (req, res) => {
@@ -307,30 +310,68 @@ router.post('/login', async (req, res) => {
       return res.status(400).json({ error: 'Username and password are required' });
     }
     
-    // Ensure users are initialized before login attempt
+    // ALWAYS ensure users are initialized before login attempt
+    // This is critical for Railway deployments
     initDefaultUser();
     
+    // Small delay to ensure file write is complete
+    await new Promise(resolve => setTimeout(resolve, 100));
+    
     const users = readUsers();
-    console.log(`Login attempt for username: ${username}`);
-    console.log(`Total users in system: ${users.length}`);
-    console.log(`Available usernames: ${users.map(u => u.username).join(', ')}`);
+    console.log(`[LOGIN] Attempt for username: ${username}`);
+    console.log(`[LOGIN] Total users in system: ${users.length}`);
+    console.log(`[LOGIN] Available usernames: ${users.map(u => u.username).join(', ')}`);
+    
+    if (users.length === 0) {
+      console.log(`[LOGIN] No users found! Re-initializing...`);
+      initDefaultUser();
+      await new Promise(resolve => setTimeout(resolve, 100));
+      const retryUsers = readUsers();
+      console.log(`[LOGIN] After re-init, users count: ${retryUsers.length}`);
+    }
     
     const user = users.find(u => u.username === username);
     
     if (!user) {
-      console.log(`User not found: ${username}`);
-      return res.status(401).json({ error: 'Invalid credentials' });
+      console.log(`[LOGIN] User not found: ${username}`);
+      console.log(`[LOGIN] Available users: ${users.map(u => u.username)}`);
+      return res.status(401).json({ 
+        error: 'Invalid credentials',
+        debug: {
+          userFound: false,
+          availableUsers: users.map(u => u.username),
+          totalUsers: users.length
+        }
+      });
     }
     
-    console.log(`User found: ${user.username}, comparing password...`);
+    console.log(`[LOGIN] User found: ${user.username}`);
+    console.log(`[LOGIN] User password hash exists: ${!!user.password}`);
+    console.log(`[LOGIN] User password hash length: ${user.password ? user.password.length : 0}`);
+    
+    // Verify password
     const isValidPassword = await bcrypt.compare(password, user.password);
     
+    console.log(`[LOGIN] Password comparison result: ${isValidPassword}`);
+    
     if (!isValidPassword) {
-      console.log(`Password mismatch for user: ${username}`);
-      return res.status(401).json({ error: 'Invalid credentials' });
+      // Try to verify with a test hash to see if bcrypt is working
+      const testHash = bcrypt.hashSync('admin123', 10);
+      const testCompare = await bcrypt.compare('admin123', testHash);
+      console.log(`[LOGIN] Test hash comparison: ${testCompare}`);
+      console.log(`[LOGIN] Password mismatch for user: ${username}`);
+      
+      return res.status(401).json({ 
+        error: 'Invalid credentials',
+        debug: {
+          userFound: true,
+          passwordMatch: false,
+          bcryptWorking: testCompare
+        }
+      });
     }
     
-    console.log(`Login successful for user: ${username}`);
+    console.log(`[LOGIN] ✓ Login successful for user: ${username}`);
     const token = jwt.sign(
       { userId: user.id, username: user.username, role: user.role },
       JWT_SECRET,
@@ -348,7 +389,8 @@ router.post('/login', async (req, res) => {
       }
     });
   } catch (error) {
-    console.error('Login error:', error);
+    console.error('[LOGIN] ERROR:', error);
+    console.error('[LOGIN] Stack:', error.stack);
     res.status(500).json({ error: 'Login failed', details: error.message });
   }
 });
